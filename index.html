@@ -11,20 +11,22 @@
        Aşağıdakı 'PIXEL_ID' yerinə öz Meta (Facebook) Pixel ID-nizi yazın.
        Bu səhifəni GitHub Pages-də yerləşdirib açdıqdan sonra Console-da (F12) event-ləri izləyə bilərsiniz.
   ================================== -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq) return; n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
-  n.queue=[]; t=b.createElement(e); t.async=!0;
-  t.src=v; s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}
-  (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  // REPLACE 'PIXEL_ID' WITH YOUR PIXEL ID
-  fbq('init', 'PIXEL_ID');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1854200001902920');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1854200001902920&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
   <!-- Header -->
   <header style="background:#fff; padding:20px 24px; box-shadow:0 2px 6px rgba(25,25,30,0.04); display:flex; align-items:center; justify-content:space-between;">
