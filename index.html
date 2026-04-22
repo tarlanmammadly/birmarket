@@ -15,375 +15,111 @@
     --accent2: #7b61ff;
     --acq: #00e5a0;
     --eng: #ff6b6b;
+    --yellow: #ffd166;
+    --blue: #61b3ff;
     --text: #f0f0f5;
     --muted: #6b6b80;
     --mono: 'DM Mono', monospace;
     --display: 'Syne', sans-serif;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--mono); min-height: 100vh; padding: 32px 20px; }
+  .container { max-width: 900px; margin: 0 auto; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--mono);
-    min-height: 100vh;
-    padding: 40px 20px;
-  }
-
-  .container { max-width: 860px; margin: 0 auto; }
-
-  header {
-    margin-bottom: 48px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 24px;
-  }
-
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  h1 {
-    font-family: var(--display);
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 800;
-    line-height: 1.1;
-    color: var(--text);
-  }
-
+  header { margin-bottom: 36px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-family: var(--display); font-size: clamp(26px, 5vw, 44px); font-weight: 800; line-height: 1.1; }
   h1 span { color: var(--accent); }
+  .subtitle { margin-top: 8px; color: var(--muted); font-size: 12px; letter-spacing: 0.03em; }
 
-  .subtitle {
-    margin-top: 10px;
-    color: var(--muted);
-    font-size: 13px;
-    letter-spacing: 0.03em;
-  }
-
-  /* TABS */
-  .tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 32px;
-    background: var(--surface);
-    padding: 4px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-  }
-
-  .tab-btn {
-    flex: 1;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 7px;
-    background: transparent;
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.04em;
-  }
-
-  .tab-btn.active {
-    background: var(--surface2);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-
+  .tabs { display: flex; gap: 4px; margin-bottom: 28px; background: var(--surface); padding: 4px; border-radius: 10px; border: 1px solid var(--border); flex-wrap: wrap; }
+  .tab-btn { flex: 1; min-width: 80px; padding: 9px 12px; border: none; border-radius: 7px; background: transparent; color: var(--muted); font-family: var(--mono); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; letter-spacing: 0.03em; white-space: nowrap; }
+  .tab-btn.active { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
-  /* GENERATOR */
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
+  .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .field-group { margin-bottom: 22px; }
+  .options-grid { display: flex; flex-wrap: wrap; gap: 7px; }
 
-  .field-group {
-    margin-bottom: 24px;
-  }
-
-  .options-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .opt-btn {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.05em;
-  }
-
+  .opt-btn { padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; letter-spacing: 0.04em; }
   .opt-btn:hover { border-color: var(--accent); color: var(--text); }
+  .opt-btn.sel-acq { background: rgba(0,229,160,0.1); border-color: var(--acq); color: var(--acq); }
+  .opt-btn.sel-eng { background: rgba(255,107,107,0.1); border-color: var(--eng); color: var(--eng); }
+  .opt-btn.sel-def { background: rgba(123,97,255,0.1); border-color: var(--accent2); color: #a08fff; }
+  .opt-btn.sel-yel { background: rgba(255,209,102,0.1); border-color: var(--yellow); color: var(--yellow); }
+  .opt-btn.sel-blu { background: rgba(97,179,255,0.1); border-color: var(--blue); color: var(--blue); }
 
-  .opt-btn.selected-acq {
-    background: rgba(0,229,160,0.1);
-    border-color: var(--acq);
-    color: var(--acq);
-  }
-
-  .opt-btn.selected-eng {
-    background: rgba(255,107,107,0.1);
-    border-color: var(--eng);
-    color: var(--eng);
-  }
-
-  .opt-btn.selected {
-    background: rgba(123,97,255,0.1);
-    border-color: var(--accent2);
-    color: #a08fff;
-  }
-
-  /* Custom input */
-  .custom-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .custom-input {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13px;
-    padding: 9px 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
+  .custom-row { display: flex; gap: 8px; margin-top: 8px; }
+  .custom-input { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 8px 13px; outline: none; transition: border-color 0.2s; }
   .custom-input:focus { border-color: var(--accent2); }
   .custom-input::placeholder { color: var(--muted); }
-
-  .add-btn {
-    padding: 9px 16px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-
+  .add-btn { padding: 8px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .add-btn:hover { border-color: var(--accent2); color: var(--accent2); }
 
-  /* OUTPUT */
-  .output-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-top: 32px;
-    position: relative;
-  }
-
-  .output-label {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-
-  .name-preview {
-    font-family: var(--display);
-    font-size: clamp(16px, 3vw, 26px);
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: 0.02em;
-    word-break: break-all;
-    min-height: 40px;
-  }
-
-  .name-preview .part-team-acq { color: var(--acq); }
-  .name-preview .part-team-eng { color: var(--eng); }
-  .name-preview .part-type { color: #a08fff; }
-  .name-preview .part-campaign { color: var(--text); }
-  .name-preview .part-audience { color: #ffd166; }
+  .output-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 18px; margin-top: 28px; position: relative; }
+  .output-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .name-preview { font-family: var(--display); font-size: clamp(15px, 3vw, 24px); font-weight: 700; letter-spacing: 0.02em; word-break: break-all; min-height: 36px; padding-right: 140px; }
+  .name-preview .p-acq { color: var(--acq); }
+  .name-preview .p-eng { color: var(--eng); }
+  .name-preview .p-type { color: #a08fff; }
+  .name-preview .p-cat { color: var(--text); }
+  .name-preview .p-aud { color: var(--yellow); }
+  .name-preview .p-fmt { color: var(--blue); }
+  .name-preview .p-product { color: #ff9f61; }
+  .name-preview .p-ver { color: #f0f0f5; }
   .name-preview .sep { color: var(--muted); }
 
-  .copy-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 8px 16px;
-    background: var(--accent);
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.05em;
-  }
+  .plain-name { font-size: 12px; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); word-break: break-all; }
 
+  .btn-row { position: absolute; top: 18px; right: 18px; display: flex; gap: 8px; }
+  .copy-btn { padding: 7px 14px; background: var(--accent); color: #000; border: none; border-radius: 6px; font-family: var(--mono); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
   .copy-btn:hover { background: #00ffb3; }
   .copy-btn.copied { background: var(--accent2); color: #fff; }
+  .reset-btn { padding: 7px 14px; background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; }
+  .reset-btn:hover { border-color: var(--eng); color: var(--eng); }
 
-  .plain-name {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    word-break: break-all;
-  }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
+  .chip { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+  .chip-dot { width: 7px; height: 7px; border-radius: 50%; }
 
-  /* Legend chips */
-  .legend {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 16px;
-  }
+  .level-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-family: var(--mono); letter-spacing: 0.1em; font-weight: 500; margin-bottom: 16px; }
+  .lv-campaign { background: rgba(0,229,160,0.12); color: var(--acq); border: 1px solid rgba(0,229,160,0.3); }
+  .lv-adset { background: rgba(255,209,102,0.12); color: var(--yellow); border: 1px solid rgba(255,209,102,0.3); }
+  .lv-ad { background: rgba(97,179,255,0.12); color: var(--blue); border: 1px solid rgba(97,179,255,0.3); }
 
-  .chip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: var(--muted);
-  }
+  .structure-pill { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 22px; font-size: 12px; color: var(--muted); }
+  .structure-pill strong { color: var(--text); font-family: var(--display); font-size: 15px; font-weight: 700; display: block; margin-bottom: 4px; }
 
-  .chip-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-  }
-
-  /* DICTIONARY TABLE */
-  .dict-section { margin-bottom: 36px; }
-
-  .dict-title {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: var(--text);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-
-  th {
-    text-align: left;
-    padding: 10px 14px;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-  }
-
-  td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
-
-  td:first-child {
-    font-family: var(--mono);
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
+  /* Dict */
+  .dict-section { margin-bottom: 32px; }
+  .dict-title { font-family: var(--display); font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { text-align: left; padding: 9px 13px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 9px 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  td:first-child { font-family: var(--mono); font-weight: 500; white-space: nowrap; }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: var(--surface2); }
-
-  .tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-family: var(--mono);
-    margin: 1px;
-  }
-
+  .tag { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-family: var(--mono); margin: 1px; }
   .tag-acq { background: rgba(0,229,160,0.12); color: var(--acq); }
   .tag-eng { background: rgba(255,107,107,0.12); color: var(--eng); }
   .tag-both { background: rgba(123,97,255,0.12); color: #a08fff; }
 
-  /* AUDIENCE tab */
-  .audience-structure {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-  }
-
-  .aud-formula {
-    font-family: var(--display);
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-
-  .aud-example {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-  }
-
+  /* Audience tab */
+  .audience-structure { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 22px; }
+  .aud-formula { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 7px; }
+  .aud-example { font-size: 12px; color: var(--muted); }
   .aud-example span { color: var(--accent); }
+  .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 16px; }
+  .example-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .ex-name { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 3px; }
+  .ex-desc { font-size: 11px; color: var(--muted); }
 
-  .examples-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  @media (max-width: 580px) {
+  @media (max-width: 560px) {
     .examples-grid { grid-template-columns: 1fr; }
     .custom-row { flex-direction: column; }
-  }
-
-  .example-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 16px;
-  }
-
-  .ex-name {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-
-  .ex-desc {
-    font-size: 11px;
-    color: var(--muted);
+    .name-preview { padding-right: 0; }
+    .btn-row { position: static; margin-bottom: 12px; }
   }
 </style>
 </head>
@@ -392,115 +128,264 @@
   <header>
     <div class="eyebrow">Marketplace · Naming System</div>
     <h1>Ad <span>Naming</span> Generator</h1>
-    <p class="subtitle">Structure: [Team]_[Type]_[Campaign/Category]_[Audience]</p>
+    <p class="subtitle">Campaign · Ad Set · Ad — pick a level and build your name</p>
   </header>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('generator')">⚡ Generator</button>
-    <button class="tab-btn" onclick="switchTab('dictionary')">📖 Dictionary</button>
-    <button class="tab-btn" onclick="switchTab('audiences')">👥 Audiences</button>
+    <button class="tab-btn active" onclick="switchTab('campaign',this)">📢 Campaign</button>
+    <button class="tab-btn"        onclick="switchTab('adset',this)">🎯 Ad Set</button>
+    <button class="tab-btn"        onclick="switchTab('ad',this)">🖼 Ad</button>
+    <button class="tab-btn"        onclick="switchTab('dictionary',this)">📖 Dictionary</button>
+    <button class="tab-btn"        onclick="switchTab('audiences',this)">👥 Audiences</button>
   </div>
 
-  <!-- GENERATOR TAB -->
-  <div id="tab-generator" class="tab-content active">
+  <!-- ══════════ CAMPAIGN ══════════ -->
+  <div id="tab-campaign" class="tab-content active">
+    <div class="level-badge lv-campaign">CAMPAIGN LEVEL</div>
+    <div class="structure-pill">
+      <strong>[Team] _ [Type] _ [Campaign / Category] _ [Audience]</strong>
+      e.g. ACQ_Conv_SummerSale_LAL · ENG_Ret_Electronics_CartAband
+    </div>
 
-    <!-- TEAM -->
     <div class="field-group">
       <div class="section-label">1 · Team</div>
-      <div class="options-grid">
-        <button class="opt-btn" onclick="select('team','ACQ',this,'acq')">ACQ — Acquisition</button>
-        <button class="opt-btn" onclick="select('team','ENG',this,'eng')">ENG — Engagement</button>
+      <div class="options-grid" id="c-team-opts">
+        <button class="opt-btn" onclick="sel('c','team','ACQ',this,'acq')">ACQ — Acquisition</button>
+        <button class="opt-btn" onclick="sel('c','team','ENG',this,'eng')">ENG — Engagement</button>
       </div>
     </div>
 
-    <!-- TYPE -->
     <div class="field-group">
       <div class="section-label">2 · Campaign Type</div>
-      <div class="options-grid" id="type-options">
-        <button class="opt-btn" onclick="select('type','Conv',this)">Conv</button>
-        <button class="opt-btn" onclick="select('type','Ret',this)">Ret</button>
-        <button class="opt-btn" onclick="select('type','Traffic',this)">Traffic</button>
-        <button class="opt-btn" onclick="select('type','Reach',this)">Reach</button>
-        <button class="opt-btn" onclick="select('type','AppInstall',this)">AppInstall</button>
-        <button class="opt-btn" onclick="select('type','LeadGen',this)">LeadGen</button>
-        <button class="opt-btn" onclick="select('type','Catalog',this)">Catalog</button>
-        <button class="opt-btn" onclick="select('type','AppPromo',this)">AppPromo</button>
-        <button class="opt-btn" onclick="select('type','Demand',this)">Demand</button>
-        <button class="opt-btn" onclick="select('type','Display',this)">Display</button>
-        <button class="opt-btn" onclick="select('type','PMax',this)">PMax</button>
-        <button class="opt-btn" onclick="select('type','Video',this)">Video</button>
+      <div class="options-grid" id="c-type-opts">
+        <button class="opt-btn" onclick="sel('c','type','Conv',this)">Conv</button>
+        <button class="opt-btn" onclick="sel('c','type','Ret',this)">Ret</button>
+        <button class="opt-btn" onclick="sel('c','type','Catalog',this)">Catalog</button>
+        <button class="opt-btn" onclick="sel('c','type','AppPromo',this)">AppPromo</button>
+        <button class="opt-btn" onclick="sel('c','type','Demand',this)">Demand</button>
+        <button class="opt-btn" onclick="sel('c','type','Display',this)">Display</button>
+        <button class="opt-btn" onclick="sel('c','type','PMax',this)">PMax</button>
+        <button class="opt-btn" onclick="sel('c','type','Video',this)">Video</button>
+        <button class="opt-btn" onclick="sel('c','type','Traffic',this)">Traffic</button>
+        <button class="opt-btn" onclick="sel('c','type','Reach',this)">Reach</button>
+        <button class="opt-btn" onclick="sel('c','type','LeadGen',this)">LeadGen</button>
       </div>
     </div>
 
-    <!-- CAMPAIGN / CATEGORY -->
     <div class="field-group">
       <div class="section-label">3 · Campaign / Category</div>
-      <div class="options-grid" id="campaign-options">
-        <button class="opt-btn" onclick="select('campaign','SummerSale',this)">SummerSale</button>
-        <button class="opt-btn" onclick="select('campaign','BlackFriday',this)">BlackFriday</button>
-        <button class="opt-btn" onclick="select('campaign','Electronics',this)">Electronics</button>
-        <button class="opt-btn" onclick="select('campaign','Fashion',this)">Fashion</button>
-        <button class="opt-btn" onclick="select('campaign','Beauty',this)">Beauty</button>
-        <button class="opt-btn" onclick="select('campaign','HomeDecor',this)">HomeDecor</button>
+      <div class="options-grid" id="c-campaign-opts">
+        <button class="opt-btn" onclick="sel('c','campaign','SummerSale',this)">SummerSale</button>
+        <button class="opt-btn" onclick="sel('c','campaign','BlackFriday',this)">BlackFriday</button>
+        <button class="opt-btn" onclick="sel('c','campaign','WinterPromo',this)">WinterPromo</button>
+        <button class="opt-btn" onclick="sel('c','campaign','Electronics',this)">Electronics</button>
+        <button class="opt-btn" onclick="sel('c','campaign','Fashion',this)">Fashion</button>
+        <button class="opt-btn" onclick="sel('c','campaign','Beauty',this)">Beauty</button>
+        <button class="opt-btn" onclick="sel('c','campaign','HomeDecor',this)">HomeDecor</button>
+        <button class="opt-btn" onclick="sel('c','campaign','Sports',this)">Sports</button>
       </div>
       <div class="custom-row">
-        <input class="custom-input" id="campaign-custom" placeholder="Type custom name (e.g. WinterPromo)" />
-        <button class="add-btn" onclick="addCustom('campaign')">+ Add & Select</button>
+        <input class="custom-input" id="c-campaign-custom" placeholder="Custom (e.g. RamadanSale, Appliances)" />
+        <button class="add-btn" onclick="addCustom('c','campaign')">+ Add & Select</button>
       </div>
     </div>
 
-    <!-- AUDIENCE -->
     <div class="field-group">
       <div class="section-label">4 · Audience</div>
-      <div class="options-grid" id="audience-options">
-        <button class="opt-btn" onclick="select('audience','Cold',this)">Cold</button>
-        <button class="opt-btn" onclick="select('audience','Broad',this)">Broad</button>
-        <button class="opt-btn" onclick="select('audience','LAL',this)">LAL</button>
-        <button class="opt-btn" onclick="select('audience','LAL-Buyers',this)">LAL-Buyers</button>
-        <button class="opt-btn" onclick="select('audience','LAL-CRM',this)">LAL-CRM</button>
-        <button class="opt-btn" onclick="select('audience','CRM',this)">CRM</button>
-        <button class="opt-btn" onclick="select('audience','Visitors7d',this)">Visitors7d</button>
-        <button class="opt-btn" onclick="select('audience','Visitors14d',this)">Visitors14d</button>
-        <button class="opt-btn" onclick="select('audience','Visitors30d',this)">Visitors30d</button>
-        <button class="opt-btn" onclick="select('audience','CartAband',this)">CartAband</button>
-        <button class="opt-btn" onclick="select('audience','AddToCart',this)">AddToCart</button>
-        <button class="opt-btn" onclick="select('audience','PDPView',this)">PDPView</button>
-        <button class="opt-btn" onclick="select('audience','Buyers',this)">Buyers</button>
-        <button class="opt-btn" onclick="select('audience','Winback',this)">Winback</button>
-        <button class="opt-btn" onclick="select('audience','EngVideo',this)">EngVideo</button>
-        <button class="opt-btn" onclick="select('audience','EngPage',this)">EngPage</button>
+      <div class="options-grid" id="c-audience-opts">
+        <button class="opt-btn" onclick="sel('c','audience','Cold',this)">Cold</button>
+        <button class="opt-btn" onclick="sel('c','audience','Broad',this)">Broad</button>
+        <button class="opt-btn" onclick="sel('c','audience','LAL',this)">LAL</button>
+        <button class="opt-btn" onclick="sel('c','audience','LAL-Buyers',this)">LAL-Buyers</button>
+        <button class="opt-btn" onclick="sel('c','audience','LAL-CRM',this)">LAL-CRM</button>
+        <button class="opt-btn" onclick="sel('c','audience','CRM',this)">CRM</button>
+        <button class="opt-btn" onclick="sel('c','audience','Visitors7d',this)">Visitors7d</button>
+        <button class="opt-btn" onclick="sel('c','audience','Visitors14d',this)">Visitors14d</button>
+        <button class="opt-btn" onclick="sel('c','audience','Visitors30d',this)">Visitors30d</button>
+        <button class="opt-btn" onclick="sel('c','audience','CartAband',this)">CartAband</button>
+        <button class="opt-btn" onclick="sel('c','audience','PDPView',this)">PDPView</button>
+        <button class="opt-btn" onclick="sel('c','audience','Buyers',this)">Buyers</button>
+        <button class="opt-btn" onclick="sel('c','audience','Winback',this)">Winback</button>
       </div>
       <div class="custom-row">
-        <input class="custom-input" id="audience-custom" placeholder="Type custom audience" />
-        <button class="add-btn" onclick="addCustom('audience')">+ Add & Select</button>
+        <input class="custom-input" id="c-audience-custom" placeholder="Custom audience" />
+        <button class="add-btn" onclick="addCustom('c','audience')">+ Add & Select</button>
       </div>
     </div>
 
-    <!-- OUTPUT -->
     <div class="output-box">
-      <div class="output-label">Generated Name</div>
-      <div class="name-preview" id="preview">— Select options above —</div>
-      <div class="plain-name" id="plain-name"></div>
-      <button class="copy-btn" id="copy-btn" onclick="copyName()">Copy</button>
+      <div class="output-label">Generated Campaign Name</div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTab('c')">↺ Reset</button>
+        <button class="copy-btn" id="c-copy-btn" onclick="copyName('c')">Copy</button>
+      </div>
+      <div class="name-preview" id="c-preview">— Select options above —</div>
+      <div class="plain-name" id="c-plain"></div>
       <div class="legend">
-        <div class="chip"><div class="chip-dot" style="background:var(--acq)"></div>ACQ</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--eng)"></div>ENG</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--acq)"></div>Team</div>
         <div class="chip"><div class="chip-dot" style="background:#a08fff"></div>Type</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Campaign</div>
-        <div class="chip"><div class="chip-dot" style="background:#ffd166"></div>Audience</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Campaign/Cat</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--yellow)"></div>Audience</div>
       </div>
     </div>
-
   </div>
 
-  <!-- DICTIONARY TAB -->
+  <!-- ══════════ AD SET ══════════ -->
+  <div id="tab-adset" class="tab-content">
+    <div class="level-badge lv-adset">AD SET LEVEL</div>
+    <div class="structure-pill">
+      <strong>[Team] _ [Category] _ [Audience] _ [Placement]</strong>
+      e.g. ACQ_Electronics_LAL_Feed · ENG_SummerSale_CartAband_Stories
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">1 · Team</div>
+      <div class="options-grid" id="as-team-opts">
+        <button class="opt-btn" onclick="sel('as','team','ACQ',this,'acq')">ACQ — Acquisition</button>
+        <button class="opt-btn" onclick="sel('as','team','ENG',this,'eng')">ENG — Engagement</button>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">2 · Category / Campaign</div>
+      <div class="options-grid" id="as-category-opts">
+        <button class="opt-btn" onclick="sel('as','category','SummerSale',this)">SummerSale</button>
+        <button class="opt-btn" onclick="sel('as','category','BlackFriday',this)">BlackFriday</button>
+        <button class="opt-btn" onclick="sel('as','category','WinterPromo',this)">WinterPromo</button>
+        <button class="opt-btn" onclick="sel('as','category','Electronics',this)">Electronics</button>
+        <button class="opt-btn" onclick="sel('as','category','Fashion',this)">Fashion</button>
+        <button class="opt-btn" onclick="sel('as','category','Beauty',this)">Beauty</button>
+        <button class="opt-btn" onclick="sel('as','category','HomeDecor',this)">HomeDecor</button>
+        <button class="opt-btn" onclick="sel('as','category','Sports',this)">Sports</button>
+      </div>
+      <div class="custom-row">
+        <input class="custom-input" id="as-category-custom" placeholder="Custom category / campaign" />
+        <button class="add-btn" onclick="addCustom('as','category')">+ Add & Select</button>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">3 · Audience</div>
+      <div class="options-grid" id="as-audience-opts">
+        <button class="opt-btn" onclick="sel('as','audience','Cold',this)">Cold</button>
+        <button class="opt-btn" onclick="sel('as','audience','Broad',this)">Broad</button>
+        <button class="opt-btn" onclick="sel('as','audience','LAL',this)">LAL</button>
+        <button class="opt-btn" onclick="sel('as','audience','LAL-Buyers',this)">LAL-Buyers</button>
+        <button class="opt-btn" onclick="sel('as','audience','CRM',this)">CRM</button>
+        <button class="opt-btn" onclick="sel('as','audience','Visitors7d',this)">Visitors7d</button>
+        <button class="opt-btn" onclick="sel('as','audience','Visitors14d',this)">Visitors14d</button>
+        <button class="opt-btn" onclick="sel('as','audience','Visitors30d',this)">Visitors30d</button>
+        <button class="opt-btn" onclick="sel('as','audience','CartAband',this)">CartAband</button>
+        <button class="opt-btn" onclick="sel('as','audience','PDPView',this)">PDPView</button>
+        <button class="opt-btn" onclick="sel('as','audience','Buyers',this)">Buyers</button>
+        <button class="opt-btn" onclick="sel('as','audience','Winback',this)">Winback</button>
+      </div>
+      <div class="custom-row">
+        <input class="custom-input" id="as-audience-custom" placeholder="Custom audience" />
+        <button class="add-btn" onclick="addCustom('as','audience')">+ Add & Select</button>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">4 · Placement <span style="color:var(--muted);font-size:10px">(optional)</span></div>
+      <div class="options-grid" id="as-placement-opts">
+        <button class="opt-btn" onclick="sel('as','placement','Feed',this,'yel')">Feed</button>
+        <button class="opt-btn" onclick="sel('as','placement','Stories',this,'yel')">Stories</button>
+        <button class="opt-btn" onclick="sel('as','placement','Reels',this,'yel')">Reels</button>
+        <button class="opt-btn" onclick="sel('as','placement','Search',this,'yel')">Search</button>
+        <button class="opt-btn" onclick="sel('as','placement','Display',this,'yel')">Display</button>
+        <button class="opt-btn" onclick="sel('as','placement','InStream',this,'yel')">InStream</button>
+        <button class="opt-btn" onclick="sel('as','placement','TopFeed',this,'yel')">TopFeed</button>
+        <button class="opt-btn" onclick="sel('as','placement','Auto',this,'yel')">Auto</button>
+      </div>
+    </div>
+
+    <div class="output-box">
+      <div class="output-label">Generated Ad Set Name</div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTab('as')">↺ Reset</button>
+        <button class="copy-btn" id="as-copy-btn" onclick="copyName('as')">Copy</button>
+      </div>
+      <div class="name-preview" id="as-preview">— Select options above —</div>
+      <div class="plain-name" id="as-plain"></div>
+      <div class="legend">
+        <div class="chip"><div class="chip-dot" style="background:var(--acq)"></div>Team</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Category</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--yellow)"></div>Audience</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--blue)"></div>Placement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ AD ══════════ -->
+  <div id="tab-ad" class="tab-content">
+    <div class="level-badge lv-ad">AD LEVEL</div>
+    <div class="structure-pill">
+      <strong>[Format] _ [Brand / Product] _ [Version]</strong>
+      e.g. Carousel_NikeAirMax_v1 · Video_SamsungTV_v2 · Single_ZaraCollection_A
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">1 · Ad Format</div>
+      <div class="options-grid" id="ad-format-opts">
+        <button class="opt-btn" onclick="sel('ad','format','Single',this,'blu')">Single Image</button>
+        <button class="opt-btn" onclick="sel('ad','format','Carousel',this,'blu')">Carousel</button>
+        <button class="opt-btn" onclick="sel('ad','format','Video',this,'blu')">Video</button>
+        <button class="opt-btn" onclick="sel('ad','format','Animation',this,'blu')">Animation / GIF</button>
+        <button class="opt-btn" onclick="sel('ad','format','Collection',this,'blu')">Collection</button>
+        <button class="opt-btn" onclick="sel('ad','format','DPA',this,'blu')">DPA (Dynamic)</button>
+        <button class="opt-btn" onclick="sel('ad','format','Story',this,'blu')">Story</button>
+        <button class="opt-btn" onclick="sel('ad','format','Reel',this,'blu')">Reel</button>
+        <button class="opt-btn" onclick="sel('ad','format','UGC',this,'blu')">UGC</button>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">2 · Brand / Product / Model</div>
+      <div class="options-grid" id="ad-product-opts"></div>
+      <div class="custom-row">
+        <input class="custom-input" id="ad-product-custom" placeholder="Brand or product (e.g. NikeAirMax, SamsungTV65)" />
+        <button class="add-btn" onclick="addCustom('ad','product')">+ Add & Select</button>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="section-label">3 · Version <span style="color:var(--muted);font-size:10px">(A/B test or iteration)</span></div>
+      <div class="options-grid" id="ad-version-opts">
+        <button class="opt-btn" onclick="sel('ad','version','v1',this)">v1</button>
+        <button class="opt-btn" onclick="sel('ad','version','v2',this)">v2</button>
+        <button class="opt-btn" onclick="sel('ad','version','v3',this)">v3</button>
+        <button class="opt-btn" onclick="sel('ad','version','v4',this)">v4</button>
+        <button class="opt-btn" onclick="sel('ad','version','A',this)">A</button>
+        <button class="opt-btn" onclick="sel('ad','version','B',this)">B</button>
+        <button class="opt-btn" onclick="sel('ad','version','C',this)">C</button>
+      </div>
+    </div>
+
+    <div class="output-box">
+      <div class="output-label">Generated Ad Name</div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTab('ad')">↺ Reset</button>
+        <button class="copy-btn" id="ad-copy-btn" onclick="copyName('ad')">Copy</button>
+      </div>
+      <div class="name-preview" id="ad-preview">— Select options above —</div>
+      <div class="plain-name" id="ad-plain"></div>
+      <div class="legend">
+        <div class="chip"><div class="chip-dot" style="background:var(--blue)"></div>Format</div>
+        <div class="chip"><div class="chip-dot" style="background:#ff9f61"></div>Brand/Product</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Version</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ DICTIONARY ══════════ -->
   <div id="tab-dictionary" class="tab-content">
 
     <div class="dict-section">
       <div class="dict-title">Team</div>
       <table>
         <tr><th>Code</th><th>Full Name</th><th>Usage</th></tr>
-        <tr><td><span class="tag tag-acq">ACQ</span></td><td>Acquisition</td><td>Cold audiences, LAL, Broad — finding new users</td></tr>
+        <tr><td><span class="tag tag-acq">ACQ</span></td><td>Acquisition</td><td>Cold, LAL, Broad — finding new users</td></tr>
         <tr><td><span class="tag tag-eng">ENG</span></td><td>Engagement</td><td>Retargeting, upsell, winback — existing users</td></tr>
       </table>
     </div>
@@ -509,17 +394,17 @@
       <div class="dict-title">Campaign Type</div>
       <table>
         <tr><th>Code</th><th>Full Name</th><th>Platform</th><th>Team</th></tr>
-        <tr><td>Conv</td><td>Conversions</td><td>Meta / TikTok / Google</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Ret</td><td>Retargeting</td><td>Meta / TikTok / Google</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Catalog</td><td>Catalog / DPA</td><td>Meta / TikTok</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>AppPromo</td><td>App Campaign / App Promo</td><td>Google / Meta / TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
+        <tr><td>Conv</td><td>Conversions</td><td>Meta · TikTok · Google</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>Ret</td><td>Retargeting</td><td>Meta · TikTok · Google</td><td><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>Catalog</td><td>Catalog / DPA</td><td>Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>AppPromo</td><td>App Campaign</td><td>Google · Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
         <tr><td>Demand</td><td>Demand Gen</td><td>Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
         <tr><td>Display</td><td>Display</td><td>Google</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
         <tr><td>PMax</td><td>Performance Max</td><td>Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Video</td><td>Video / YouTube</td><td>Google / TikTok / Meta</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Traffic</td><td>Traffic</td><td>Meta / TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Reach</td><td>Reach / Awareness</td><td>Meta / TikTok / Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>LeadGen</td><td>Lead Generation</td><td>Meta / TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
+        <tr><td>Video</td><td>Video / YouTube</td><td>Google · TikTok · Meta</td><td><span class="tag tag-acq">ACQ</span></td></tr>
+        <tr><td>Traffic</td><td>Traffic</td><td>Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>Reach</td><td>Reach / Awareness</td><td>Meta · TikTok · Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
+        <tr><td>LeadGen</td><td>Lead Generation</td><td>Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
       </table>
     </div>
 
@@ -531,178 +416,173 @@
         <tr><td>Broad</td><td>No targeting restrictions, algorithm-driven</td><td><span class="tag tag-acq">ACQ</span></td></tr>
         <tr><td>LAL</td><td>Lookalike audience (general)</td><td><span class="tag tag-acq">ACQ</span></td></tr>
         <tr><td>LAL-Buyers</td><td>Lookalike based on past buyers</td><td><span class="tag tag-acq">ACQ</span></td></tr>
+        <tr><td>LAL-CRM</td><td>Lookalike seeded from CRM list</td><td><span class="tag tag-acq">ACQ</span></td></tr>
         <tr><td>CRM</td><td>Uploaded customer / email list</td><td><span class="tag tag-both">BOTH</span></td></tr>
         <tr><td>Visitors7d</td><td>Site/app visitors last 7 days</td><td><span class="tag tag-eng">ENG</span></td></tr>
         <tr><td>Visitors14d</td><td>Site/app visitors last 14 days</td><td><span class="tag tag-eng">ENG</span></td></tr>
         <tr><td>Visitors30d</td><td>Site/app visitors last 30 days</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>CartAband</td><td>Added to cart but did not purchase</td><td><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>CartAband</td><td>Added to cart, did not purchase</td><td><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>PDPView</td><td>Viewed product detail page</td><td><span class="tag tag-eng">ENG</span></td></tr>
         <tr><td>Buyers</td><td>Past purchasers</td><td><span class="tag tag-eng">ENG</span></td></tr>
         <tr><td>Winback</td><td>Lapsed buyers (60–180d no purchase)</td><td><span class="tag tag-eng">ENG</span></td></tr>
       </table>
     </div>
 
     <div class="dict-section">
-      <div class="dict-title">Campaign / Category Examples</div>
+      <div class="dict-title">Ad Format</div>
       <table>
         <tr><th>Code</th><th>Description</th></tr>
-        <tr><td>SummerSale</td><td>Seasonal promo — summer</td></tr>
-        <tr><td>BlackFriday</td><td>Black Friday campaign</td></tr>
-        <tr><td>WinterPromo</td><td>Seasonal promo — winter</td></tr>
-        <tr><td>Electronics</td><td>Electronics product category</td></tr>
-        <tr><td>Fashion</td><td>Fashion & apparel category</td></tr>
-        <tr><td>Beauty</td><td>Beauty & personal care</td></tr>
-        <tr><td>HomeDecor</td><td>Home & living category</td></tr>
+        <tr><td>Single</td><td>Single static image</td></tr>
+        <tr><td>Carousel</td><td>Multiple swipeable image/video cards</td></tr>
+        <tr><td>Video</td><td>Video ad (any length)</td></tr>
+        <tr><td>Animation</td><td>Animated GIF or motion graphic</td></tr>
+        <tr><td>Collection</td><td>Collection / instant experience</td></tr>
+        <tr><td>DPA</td><td>Dynamic Product Ad — auto-generated from feed</td></tr>
+        <tr><td>Story</td><td>Vertical 9:16 story format</td></tr>
+        <tr><td>Reel</td><td>Short-form vertical video (Reels / TikTok)</td></tr>
+        <tr><td>UGC</td><td>User-generated content style creative</td></tr>
+      </table>
+    </div>
+
+    <div class="dict-section">
+      <div class="dict-title">Placement (Ad Set)</div>
+      <table>
+        <tr><th>Code</th><th>Description</th></tr>
+        <tr><td>Feed</td><td>Main feed placement</td></tr>
+        <tr><td>Stories</td><td>Stories placement</td></tr>
+        <tr><td>Reels</td><td>Reels / short video feed</td></tr>
+        <tr><td>Search</td><td>Search results (Google / Meta)</td></tr>
+        <tr><td>Display</td><td>Display network banners</td></tr>
+        <tr><td>InStream</td><td>In-stream video (YouTube)</td></tr>
+        <tr><td>TopFeed</td><td>TikTok TopView / top of feed</td></tr>
+        <tr><td>Auto</td><td>Automatic / Advantage+ placements</td></tr>
       </table>
     </div>
 
   </div>
 
-  <!-- AUDIENCES TAB -->
+  <!-- ══════════ AUDIENCES ══════════ -->
   <div id="tab-audiences" class="tab-content">
-
     <div class="audience-structure">
-      <div class="section-label">Audience Naming Structure</div>
-      <div class="aud-formula">[Team]_[Source]_[Segment]_[Window]</div>
+      <div class="section-label">Audience Naming Structure (when uploading to ad cabinet)</div>
+      <div class="aud-formula">[Team] _ [Source] _ [Segment] _ [Window]</div>
       <div class="aud-example">e.g. <span>ACQ_LAL_Buyers_180d</span> · <span>ENG_Pixel_CartAband_7d</span> · <span>ENG_CRM_Buyers_All</span></div>
     </div>
 
     <div class="dict-section">
       <div class="dict-title">Audience Name Examples</div>
       <div class="examples-grid">
-        <div class="example-card">
-          <div class="ex-name">ACQ_LAL_Buyers_180d</div>
-          <div class="ex-desc">Lookalike based on buyers, 180-day window</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ACQ_LAL_TopBuyers_90d</div>
-          <div class="ex-desc">Lookalike based on top spenders</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ACQ_CRM_EmailList_All</div>
-          <div class="ex-desc">Uploaded full CRM email list</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ENG_Pixel_CartAband_7d</div>
-          <div class="ex-desc">Pixel — cart abandon last 7 days</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ENG_Pixel_Visitors_30d</div>
-          <div class="ex-desc">All site visitors last 30 days</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ENG_Pixel_PDPView_14d</div>
-          <div class="ex-desc">Product page viewers last 14 days</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ENG_CRM_Buyers_All</div>
-          <div class="ex-desc">All past buyers from CRM</div>
-        </div>
-        <div class="example-card">
-          <div class="ex-name">ENG_CRM_Winback_180d</div>
-          <div class="ex-desc">Lapsed customers, no purchase 180d+</div>
-        </div>
+        <div class="example-card"><div class="ex-name">ACQ_LAL_Buyers_180d</div><div class="ex-desc">Lookalike from buyers, 180-day seed</div></div>
+        <div class="example-card"><div class="ex-name">ACQ_LAL_TopBuyers_90d</div><div class="ex-desc">Lookalike from top spenders</div></div>
+        <div class="example-card"><div class="ex-name">ACQ_CRM_EmailList_All</div><div class="ex-desc">Full CRM email list upload</div></div>
+        <div class="example-card"><div class="ex-name">ACQ_LAL_CRM_All</div><div class="ex-desc">Lookalike seeded from CRM list</div></div>
+        <div class="example-card"><div class="ex-name">ENG_Pixel_CartAband_7d</div><div class="ex-desc">Cart abandoners — last 7 days</div></div>
+        <div class="example-card"><div class="ex-name">ENG_Pixel_Visitors_30d</div><div class="ex-desc">All site/app visitors — last 30 days</div></div>
+        <div class="example-card"><div class="ex-name">ENG_Pixel_PDPView_14d</div><div class="ex-desc">Product page viewers — last 14 days</div></div>
+        <div class="example-card"><div class="ex-name">ENG_CRM_Buyers_All</div><div class="ex-desc">All past buyers from CRM upload</div></div>
+        <div class="example-card"><div class="ex-name">ENG_CRM_Winback_180d</div><div class="ex-desc">Lapsed customers — no purchase 180d+</div></div>
+        <div class="example-card"><div class="ex-name">ENG_Pixel_AddToCart_14d</div><div class="ex-desc">Added to cart — last 14 days</div></div>
       </div>
     </div>
 
     <div class="dict-section">
       <div class="dict-title">Audience Source Codes</div>
       <table>
-        <tr><th>Code</th><th>Source</th></tr>
-        <tr><td>LAL</td><td>Lookalike audience</td></tr>
-        <tr><td>Pixel</td><td>Website / app pixel</td></tr>
-        <tr><td>CRM</td><td>Uploaded list (email, phone)</td></tr>
-        <tr><td>EngVideo</td><td>Video engagement</td></tr>
-        <tr><td>EngPage</td><td>Page / profile engagement</td></tr>
+        <tr><th>Code</th><th>Source</th><th>Description</th></tr>
+        <tr><td>LAL</td><td>Lookalike</td><td>Platform-generated audience similar to seed</td></tr>
+        <tr><td>Pixel</td><td>Website / App Pixel</td><td>Behavior tracked via pixel or SDK</td></tr>
+        <tr><td>CRM</td><td>CRM Upload</td><td>Uploaded email / phone list</td></tr>
+        <tr><td>EngVideo</td><td>Video Engagement</td><td>Watched X% of a video ad</td></tr>
+        <tr><td>EngPage</td><td>Page Engagement</td><td>Liked / followed / interacted with page</td></tr>
       </table>
     </div>
-
   </div>
 
 </div>
 
 <script>
-  const state = { team: null, type: null, campaign: null, audience: null };
+  const states = {
+    c:  { team: null, type: null, campaign: null, audience: null },
+    as: { team: null, category: null, audience: null, placement: null },
+    ad: { format: null, product: null, version: null }
+  };
 
-  function select(field, value, btn, teamColor) {
-    state[field] = value;
+  const tabIds = { campaign: 'tab-campaign', adset: 'tab-adset', ad: 'tab-ad', dictionary: 'tab-dictionary', audiences: 'tab-audiences' };
 
-    // clear selection in that group
-    const group = btn.closest('.options-grid');
-    group.querySelectorAll('.opt-btn').forEach(b => {
-      b.className = 'opt-btn';
-    });
-
-    // apply color
-    if (teamColor === 'acq') btn.classList.add('selected-acq');
-    else if (teamColor === 'eng') btn.classList.add('selected-eng');
-    else btn.classList.add('selected');
-
-    updatePreview();
+  function sel(tab, field, value, btn, colorClass) {
+    states[tab][field] = value;
+    btn.closest('.options-grid').querySelectorAll('.opt-btn').forEach(b => b.className = 'opt-btn');
+    const cls = { acq:'sel-acq', eng:'sel-eng', yel:'sel-yel', blu:'sel-blu' }[colorClass] || 'sel-def';
+    btn.classList.add(cls);
+    updatePreview(tab);
   }
 
-  function addCustom(field) {
-    const input = document.getElementById(`${field}-custom`);
+  function addCustom(tab, field) {
+    const input = document.getElementById(`${tab}-${field}-custom`);
     const val = input.value.trim().replace(/\s+/g, '');
     if (!val) return;
-
-    const grid = document.getElementById(`${field}-options`);
+    const grid = document.getElementById(`${tab}-${field}-opts`);
     const btn = document.createElement('button');
     btn.className = 'opt-btn';
     btn.textContent = val;
-    btn.onclick = function() { select(field, val, this); };
+    btn.onclick = function() { sel(tab, field, val, this); };
     grid.appendChild(btn);
-
-    // auto-select
-    select(field, val, btn);
+    sel(tab, field, val, btn);
     input.value = '';
   }
 
-  function updatePreview() {
-    const { team, type, campaign, audience } = state;
-    const preview = document.getElementById('preview');
-    const plain = document.getElementById('plain-name');
+  function updatePreview(tab) {
+    const s = states[tab];
+    const preview = document.getElementById(`${tab}-preview`);
+    const plain = document.getElementById(`${tab}-plain`);
+    let parts = [], html = '';
+    const sep = `<span class="sep">_</span>`;
 
-    if (!team && !type && !campaign && !audience) {
-      preview.innerHTML = '— Select options above —';
-      plain.textContent = '';
-      return;
+    if (tab === 'c') {
+      const tc = s.team === 'ACQ' ? 'p-acq' : 'p-eng';
+      if (s.team)     { html += `<span class="${tc}">${s.team}</span>`;       parts.push(s.team); }
+      if (s.type)     { html += sep + `<span class="p-type">${s.type}</span>`; parts.push(s.type); }
+      if (s.campaign) { html += sep + `<span class="p-cat">${s.campaign}</span>`; parts.push(s.campaign); }
+      if (s.audience) { html += sep + `<span class="p-aud">${s.audience}</span>`; parts.push(s.audience); }
+    } else if (tab === 'as') {
+      const tc = s.team === 'ACQ' ? 'p-acq' : 'p-eng';
+      if (s.team)      { html += `<span class="${tc}">${s.team}</span>`;        parts.push(s.team); }
+      if (s.category)  { html += sep + `<span class="p-cat">${s.category}</span>`; parts.push(s.category); }
+      if (s.audience)  { html += sep + `<span class="p-aud">${s.audience}</span>`; parts.push(s.audience); }
+      if (s.placement) { html += sep + `<span class="p-fmt">${s.placement}</span>`; parts.push(s.placement); }
+    } else if (tab === 'ad') {
+      if (s.format)  { html += `<span class="p-fmt">${s.format}</span>`;         parts.push(s.format); }
+      if (s.product) { html += sep + `<span class="p-product">${s.product}</span>`; parts.push(s.product); }
+      if (s.version) { html += sep + `<span class="p-ver">${s.version}</span>`;  parts.push(s.version); }
     }
 
-    const parts = [team, type, campaign, audience].filter(Boolean);
-    const teamClass = team === 'ACQ' ? 'part-team-acq' : team === 'ENG' ? 'part-team-eng' : '';
-
-    let html = '';
-    if (team) html += `<span class="${teamClass}">${team}</span>`;
-    if (type) html += `<span class="sep">_</span><span class="part-type">${type}</span>`;
-    if (campaign) html += `<span class="sep">_</span><span class="part-campaign">${campaign}</span>`;
-    if (audience) html += `<span class="sep">_</span><span class="part-audience">${audience}</span>`;
-
-    preview.innerHTML = html;
-    plain.textContent = parts.join('_');
+    if (!parts.length) { preview.innerHTML = '— Select options above —'; plain.textContent = ''; }
+    else { preview.innerHTML = html; plain.textContent = parts.join('_'); }
   }
 
-  function copyName() {
-    const { team, type, campaign, audience } = state;
-    const parts = [team, type, campaign, audience].filter(Boolean);
-    if (!parts.length) return;
-
-    const name = parts.join('_');
-    navigator.clipboard.writeText(name).then(() => {
-      const btn = document.getElementById('copy-btn');
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = 'Copy';
-        btn.classList.remove('copied');
-      }, 2000);
+  function copyName(tab) {
+    const plain = document.getElementById(`${tab}-plain`).textContent;
+    if (!plain) return;
+    navigator.clipboard.writeText(plain).then(() => {
+      const btn = document.getElementById(`${tab}-copy-btn`);
+      btn.textContent = 'Copied!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
     });
   }
 
-  function switchTab(tab) {
+  function resetTab(tab) {
+    const s = states[tab];
+    Object.keys(s).forEach(k => s[k] = null);
+    const tabName = tab === 'c' ? 'campaign' : tab === 'as' ? 'adset' : 'ad';
+    document.getElementById(tabIds[tabName]).querySelectorAll('.opt-btn').forEach(b => b.className = 'opt-btn');
+    updatePreview(tab);
+  }
+
+  function switchTab(name, btn) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(`tab-${tab}`).classList.add('active');
-    event.target.classList.add('active');
+    document.getElementById(tabIds[name]).classList.add('active');
+    btn.classList.add('active');
   }
 </script>
 </body>
