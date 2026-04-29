@@ -7,119 +7,130 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0d0f;
-    --surface: #16161a;
-    --surface2: #1e1e24;
-    --border: #2a2a35;
-    --accent: #00e5a0;
-    --accent2: #7b61ff;
-    --acq: #00e5a0;
-    --eng: #ff6b6b;
-    --yellow: #ffd166;
-    --blue: #61b3ff;
-    --text: #f0f0f5;
-    --muted: #6b6b80;
-    --mono: 'DM Mono', monospace;
-    --display: 'Syne', sans-serif;
+    --bg:#0d0d0f;--surface:#16161a;--surface2:#1e1e24;--border:#2a2a35;
+    --accent:#00e5a0;--accent2:#7b61ff;--acq:#00e5a0;--eng:#ff6b6b;
+    --yellow:#ffd166;--blue:#61b3ff;--text:#f0f0f5;--muted:#6b6b80;
+    --mono:'DM Mono',monospace;--display:'Syne',sans-serif;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--mono); min-height: 100vh; padding: 32px 20px; }
-  .container { max-width: 900px; margin: 0 auto; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--mono);min-height:100vh;padding:32px 20px}
+  .container{max-width:900px;margin:0 auto}
 
-  header { margin-bottom: 36px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
-  .eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
-  h1 { font-family: var(--display); font-size: clamp(26px, 5vw, 44px); font-weight: 800; line-height: 1.1; }
-  h1 span { color: var(--accent); }
-  .subtitle { margin-top: 8px; color: var(--muted); font-size: 12px; letter-spacing: 0.03em; }
+  header{margin-bottom:32px;border-bottom:1px solid var(--border);padding-bottom:20px}
+  .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+  h1{font-family:var(--display);font-size:clamp(24px,5vw,42px);font-weight:800;line-height:1.1}
+  h1 span{color:var(--accent)}
+  .subtitle{margin-top:8px;color:var(--muted);font-size:12px}
 
-  .tabs { display: flex; gap: 4px; margin-bottom: 28px; background: var(--surface); padding: 4px; border-radius: 10px; border: 1px solid var(--border); flex-wrap: wrap; }
-  .tab-btn { flex: 1; min-width: 80px; padding: 9px 12px; border: none; border-radius: 7px; background: transparent; color: var(--muted); font-family: var(--mono); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; letter-spacing: 0.03em; white-space: nowrap; }
-  .tab-btn.active { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
+  .tabs{display:flex;gap:4px;margin-bottom:28px;background:var(--surface);padding:4px;border-radius:10px;border:1px solid var(--border);flex-wrap:wrap}
+  .tab-btn{flex:1;min-width:70px;padding:9px 10px;border:none;border-radius:7px;background:transparent;color:var(--muted);font-family:var(--mono);font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+  .tab-btn.active{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+  .tab-content{display:none}
+  .tab-content.active{display:block}
 
-  .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-  .field-group { margin-bottom: 22px; }
-  .options-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+  .section-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .field-group{margin-bottom:22px}
+  .options-grid{display:flex;flex-wrap:wrap;gap:7px;min-height:34px;align-items:flex-start}
 
-  .opt-btn { padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; letter-spacing: 0.04em; }
-  .opt-btn:hover { border-color: var(--accent); color: var(--text); }
-  .opt-btn.sel-acq { background: rgba(0,229,160,0.1); border-color: var(--acq); color: var(--acq); }
-  .opt-btn.sel-eng { background: rgba(255,107,107,0.1); border-color: var(--eng); color: var(--eng); }
-  .opt-btn.sel-def { background: rgba(123,97,255,0.1); border-color: var(--accent2); color: #a08fff; }
-  .opt-btn.sel-yel { background: rgba(255,209,102,0.1); border-color: var(--yellow); color: var(--yellow); }
-  .opt-btn.sel-blu { background: rgba(97,179,255,0.1); border-color: var(--blue); color: var(--blue); }
+  /* preset buttons */
+  .opt-btn{padding:7px 14px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .15s}
+  .opt-btn:hover{border-color:var(--accent);color:var(--text)}
+  .opt-btn.sel-acq{background:rgba(0,229,160,.1);border-color:var(--acq);color:var(--acq)}
+  .opt-btn.sel-eng{background:rgba(255,107,107,.1);border-color:var(--eng);color:var(--eng)}
+  .opt-btn.sel-def{background:rgba(123,97,255,.1);border-color:var(--accent2);color:#a08fff}
+  .opt-btn.sel-yel{background:rgba(255,209,102,.1);border-color:var(--yellow);color:var(--yellow)}
+  .opt-btn.sel-blu{background:rgba(97,179,255,.1);border-color:var(--blue);color:var(--blue)}
 
-  .custom-row { display: flex; gap: 8px; margin-top: 8px; }
-  .custom-input { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: var(--mono); font-size: 13px; padding: 8px 13px; outline: none; transition: border-color 0.2s; }
-  .custom-input:focus { border-color: var(--accent2); }
-  .custom-input::placeholder { color: var(--muted); }
-  .add-btn { padding: 8px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-  .add-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+  /* custom pill */
+  .cpill{display:inline-flex;align-items:stretch;border-radius:6px;border:1px solid var(--border);background:var(--surface);overflow:hidden;transition:border-color .15s}
+  .cpill:hover{border-color:var(--accent)}
+  .cpill.sel-acq{background:rgba(0,229,160,.1);border-color:var(--acq)}
+  .cpill.sel-eng{background:rgba(255,107,107,.1);border-color:var(--eng)}
+  .cpill.sel-def{background:rgba(123,97,255,.1);border-color:var(--accent2)}
+  .cpill.sel-yel{background:rgba(255,209,102,.1);border-color:var(--yellow)}
+  .cpill.sel-blu{background:rgba(97,179,255,.1);border-color:var(--blue)}
+  .cpill-lbl{padding:7px 8px 7px 13px;font-family:var(--mono);font-size:12px;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .15s}
+  .cpill:hover .cpill-lbl{color:var(--text)}
+  .cpill.sel-acq .cpill-lbl{color:var(--acq)}
+  .cpill.sel-eng .cpill-lbl{color:var(--eng)}
+  .cpill.sel-def .cpill-lbl{color:#a08fff}
+  .cpill.sel-yel .cpill-lbl{color:var(--yellow)}
+  .cpill.sel-blu .cpill-lbl{color:var(--blue)}
+  .cpill-del{padding:7px 10px 7px 5px;font-size:14px;line-height:1;color:var(--muted);cursor:pointer;background:none;border:none;transition:color .15s}
+  .cpill-del:hover{color:var(--eng)}
 
-  .output-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 18px; margin-top: 28px; position: relative; }
-  .output-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-  .name-preview { font-family: var(--display); font-size: clamp(15px, 3vw, 24px); font-weight: 700; letter-spacing: 0.02em; word-break: break-all; min-height: 36px; padding-right: 140px; }
-  .name-preview .p-acq { color: var(--acq); }
-  .name-preview .p-eng { color: var(--eng); }
-  .name-preview .p-type { color: #a08fff; }
-  .name-preview .p-cat { color: var(--text); }
-  .name-preview .p-aud { color: var(--yellow); }
-  .name-preview .p-fmt { color: var(--blue); }
-  .name-preview .p-product { color: #ff9f61; }
-  .name-preview .p-ver { color: #f0f0f5; }
-  .name-preview .sep { color: var(--muted); }
+  /* add row */
+  .add-row{display:flex;gap:8px;margin-top:8px}
+  .url-row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .custom-input{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:13px;padding:8px 13px;outline:none;transition:border-color .2s}
+  .custom-input:focus{border-color:var(--accent2)}
+  .custom-input::placeholder{color:var(--muted)}
+  .add-btn{padding:8px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .15s;white-space:nowrap}
+  .add-btn:hover{border-color:var(--accent2);color:var(--accent2)}
+  .parse-btn{padding:8px 14px;background:rgba(123,97,255,.15);border:1px solid var(--accent2);border-radius:6px;color:#a08fff;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .15s;white-space:nowrap}
+  .parse-btn:hover{background:rgba(123,97,255,.25)}
+  .parse-status{font-size:11px;color:var(--muted);margin-top:6px;min-height:16px;transition:color .2s}
+  .parse-status.ok{color:var(--accent)}
+  .parse-status.err{color:var(--eng)}
 
-  .plain-name { font-size: 12px; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); word-break: break-all; }
+  /* output */
+  .output-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 20px 16px;margin-top:26px}
+  .output-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .output-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .name-preview{font-family:var(--display);font-size:clamp(14px,2.8vw,22px);font-weight:700;letter-spacing:.02em;word-break:break-all;min-height:30px}
+  .name-preview .p-acq{color:var(--acq)}.name-preview .p-eng{color:var(--eng)}
+  .name-preview .p-type{color:#a08fff}.name-preview .p-cat{color:var(--text)}
+  .name-preview .p-aud{color:var(--yellow)}.name-preview .p-fmt{color:var(--blue)}
+  .name-preview .p-product{color:#ff9f61}.name-preview .sep{color:var(--muted)}
+  .plain-name{font-size:11px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);word-break:break-all}
 
-  .btn-row { position: absolute; top: 18px; right: 18px; display: flex; gap: 8px; }
-  .copy-btn { padding: 7px 14px; background: var(--accent); color: #000; border: none; border-radius: 6px; font-family: var(--mono); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
-  .copy-btn:hover { background: #00ffb3; }
-  .copy-btn.copied { background: var(--accent2); color: #fff; }
-  .reset-btn { padding: 7px 14px; background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 6px; font-family: var(--mono); font-size: 12px; cursor: pointer; transition: all 0.15s; }
-  .reset-btn:hover { border-color: var(--eng); color: var(--eng); }
+  .btn-row{display:flex;gap:7px;flex-shrink:0}
+  .copy-btn{padding:7px 14px;background:var(--accent);color:#000;border:none;border-radius:6px;font-family:var(--mono);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
+  .copy-btn:hover{background:#00ffb3}
+  .copy-btn.copied{background:var(--accent2);color:#fff}
+  .reset-btn{padding:7px 12px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:6px;font-family:var(--mono);font-size:12px;cursor:pointer;transition:all .15s}
+  .reset-btn:hover{border-color:var(--eng);color:var(--eng)}
 
-  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
-  .chip { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
-  .chip-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .chip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+  .chip-dot{width:7px;height:7px;border-radius:50%}
 
-  .level-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-family: var(--mono); letter-spacing: 0.1em; font-weight: 500; margin-bottom: 16px; }
-  .lv-campaign { background: rgba(0,229,160,0.12); color: var(--acq); border: 1px solid rgba(0,229,160,0.3); }
-  .lv-adset { background: rgba(255,209,102,0.12); color: var(--yellow); border: 1px solid rgba(255,209,102,0.3); }
-  .lv-ad { background: rgba(97,179,255,0.12); color: var(--blue); border: 1px solid rgba(97,179,255,0.3); }
+  .level-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);letter-spacing:.1em;font-weight:500;margin-bottom:14px}
+  .lv-c{background:rgba(0,229,160,.12);color:var(--acq);border:1px solid rgba(0,229,160,.3)}
+  .lv-as{background:rgba(255,209,102,.12);color:var(--yellow);border:1px solid rgba(255,209,102,.3)}
+  .lv-ad{background:rgba(97,179,255,.12);color:var(--blue);border:1px solid rgba(97,179,255,.3)}
 
-  .structure-pill { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 22px; font-size: 12px; color: var(--muted); }
-  .structure-pill strong { color: var(--text); font-family: var(--display); font-size: 15px; font-weight: 700; display: block; margin-bottom: 4px; }
+  .structure-pill{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--muted)}
+  .structure-pill strong{color:var(--text);font-family:var(--display);font-size:14px;font-weight:700;display:block;margin-bottom:4px}
 
-  /* Dict */
-  .dict-section { margin-bottom: 32px; }
-  .dict-title { font-family: var(--display); font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--text); }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th { text-align: left; padding: 9px 13px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
-  td { padding: 9px 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  td:first-child { font-family: var(--mono); font-weight: 500; white-space: nowrap; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: var(--surface2); }
-  .tag { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-family: var(--mono); margin: 1px; }
-  .tag-acq { background: rgba(0,229,160,0.12); color: var(--acq); }
-  .tag-eng { background: rgba(255,107,107,0.12); color: var(--eng); }
-  .tag-both { background: rgba(123,97,255,0.12); color: #a08fff; }
+  /* dict */
+  .dict-section{margin-bottom:30px}
+  .dict-title{font-family:var(--display);font-size:14px;font-weight:700;margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{text-align:left;padding:8px 12px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+  td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  td:first-child{font-family:var(--mono);font-weight:500;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:var(--surface2)}
+  .tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-family:var(--mono);margin:1px}
+  .tag-acq{background:rgba(0,229,160,.12);color:var(--acq)}
+  .tag-eng{background:rgba(255,107,107,.12);color:var(--eng)}
+  .tag-both{background:rgba(123,97,255,.12);color:#a08fff}
 
-  /* Audience tab */
-  .audience-structure { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 22px; }
-  .aud-formula { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 7px; }
-  .aud-example { font-size: 12px; color: var(--muted); }
-  .aud-example span { color: var(--accent); }
-  .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 16px; }
-  .example-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
-  .ex-name { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 3px; }
-  .ex-desc { font-size: 11px; color: var(--muted); }
+  /* audiences */
+  .aud-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:20px}
+  .aud-formula{font-family:var(--display);font-size:17px;font-weight:700;margin-bottom:6px}
+  .aud-example{font-size:12px;color:var(--muted)}
+  .aud-example span{color:var(--accent)}
+  .examples-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  .example-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 13px}
+  .ex-name{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:3px}
+  .ex-desc{font-size:11px;color:var(--muted)}
 
-  @media (max-width: 560px) {
-    .examples-grid { grid-template-columns: 1fr; }
-    .custom-row { flex-direction: column; }
-    .name-preview { padding-right: 0; }
-    .btn-row { position: static; margin-bottom: 12px; }
+  @media(max-width:560px){
+    .examples-grid{grid-template-columns:1fr}
+    .add-row,.url-row{flex-direction:column}
+    .output-top{flex-direction:column}
   }
 </style>
 </head>
@@ -128,7 +139,7 @@
   <header>
     <div class="eyebrow">Marketplace · Naming System</div>
     <h1>Ad <span>Naming</span> Generator</h1>
-    <p class="subtitle">Campaign · Ad Set · Ad — pick a level and build your name</p>
+    <p class="subtitle">Campaign · Ad Set · Ad — custom values saved automatically</p>
   </header>
 
   <div class="tabs">
@@ -139,128 +150,142 @@
     <button class="tab-btn"        onclick="switchTab('audiences',this)">👥 Audiences</button>
   </div>
 
-  <!-- ══════════ CAMPAIGN ══════════ -->
+  <!-- ══════════════════ CAMPAIGN ══════════════════ -->
   <div id="tab-campaign" class="tab-content active">
-    <div class="level-badge lv-campaign">CAMPAIGN LEVEL</div>
+    <div class="level-badge lv-c">CAMPAIGN LEVEL</div>
     <div class="structure-pill">
-      <strong>[Team] _ [Type] _ [Campaign / Category] _ [Audience]</strong>
-      e.g. ACQ_Conv_SummerSale_LAL · ENG_Ret_Electronics_CartAband
+      <strong>[Team] _ [Type] _ [Campaign] _ [Audience]</strong>
+      e.g. Acq_Conv_SummerSale_Lal · Eng_Ret_Electronics_CartAband
     </div>
 
     <div class="field-group">
       <div class="section-label">1 · Team</div>
       <div class="options-grid" id="c-team-opts">
-        <button class="opt-btn" onclick="sel('c','team','ACQ',this,'acq')">ACQ — Acquisition</button>
-        <button class="opt-btn" onclick="sel('c','team','ENG',this,'eng')">ENG — Engagement</button>
+        <button class="opt-btn" onclick="sel('c','team','Acq',this,'acq')">Acq — Acquisition</button>
+        <button class="opt-btn" onclick="sel('c','team','Eng',this,'eng')">Eng — Engagement</button>
       </div>
     </div>
 
     <div class="field-group">
       <div class="section-label">2 · Campaign Type</div>
       <div class="options-grid" id="c-type-opts">
-        <button class="opt-btn" onclick="sel('c','type','Conv',this)">Conv</button>
-        <button class="opt-btn" onclick="sel('c','type','Ret',this)">Ret</button>
-        <button class="opt-btn" onclick="sel('c','type','Catalog',this)">Catalog</button>
-        <button class="opt-btn" onclick="sel('c','type','AppPromo',this)">AppPromo</button>
-        <button class="opt-btn" onclick="sel('c','type','Demand',this)">Demand</button>
-        <button class="opt-btn" onclick="sel('c','type','Display',this)">Display</button>
-        <button class="opt-btn" onclick="sel('c','type','PMax',this)">PMax</button>
-        <button class="opt-btn" onclick="sel('c','type','Video',this)">Video</button>
-        <button class="opt-btn" onclick="sel('c','type','Traffic',this)">Traffic</button>
-        <button class="opt-btn" onclick="sel('c','type','Reach',this)">Reach</button>
-        <button class="opt-btn" onclick="sel('c','type','LeadGen',this)">LeadGen</button>
+        <button class="opt-btn" onclick="sel('c','type','conv',this)">conv</button>
+        <button class="opt-btn" onclick="sel('c','type','ret',this)">ret</button>
+        <button class="opt-btn" onclick="sel('c','type','catalog',this)">catalog</button>
+        <button class="opt-btn" onclick="sel('c','type','apppromo',this)">apppromo</button>
+        <button class="opt-btn" onclick="sel('c','type','demand',this)">demand</button>
+        <button class="opt-btn" onclick="sel('c','type','display',this)">display</button>
+        <button class="opt-btn" onclick="sel('c','type','pmax',this)">pmax</button>
+        <button class="opt-btn" onclick="sel('c','type','video',this)">video</button>
+        <button class="opt-btn" onclick="sel('c','type','traffic',this)">traffic</button>
+        <button class="opt-btn" onclick="sel('c','type','reach',this)">reach</button>
+        <button class="opt-btn" onclick="sel('c','type','leadgen',this)">leadgen</button>
+        <button class="opt-btn" onclick="sel('c','type','smartplus',this)">smartplus</button>
+        <button class="opt-btn" onclick="sel('c','type','topview',this)">topview</button>
+        <button class="opt-btn" onclick="sel('c','type','branded',this)">branded</button>
+        <button class="opt-btn" onclick="sel('c','type','spark',this)">spark</button>
+        <button class="opt-btn" onclick="sel('c','type','shopping',this)">shopping</button>
+      </div>
+      <div class="add-row">
+        <input class="custom-input" id="c-type-input" placeholder="Custom type (e.g. awareness, appinstall)" />
+        <button class="add-btn" onclick="addCustom('c','type')">+ Add</button>
       </div>
     </div>
 
     <div class="field-group">
-      <div class="section-label">3 · Campaign / Category</div>
+      <div class="section-label">3 · Campaign / Marketing Name</div>
       <div class="options-grid" id="c-campaign-opts">
-        <button class="opt-btn" onclick="sel('c','campaign','SummerSale',this)">SummerSale</button>
-        <button class="opt-btn" onclick="sel('c','campaign','BlackFriday',this)">BlackFriday</button>
-        <button class="opt-btn" onclick="sel('c','campaign','WinterPromo',this)">WinterPromo</button>
-        <button class="opt-btn" onclick="sel('c','campaign','Electronics',this)">Electronics</button>
-        <button class="opt-btn" onclick="sel('c','campaign','Fashion',this)">Fashion</button>
-        <button class="opt-btn" onclick="sel('c','campaign','Beauty',this)">Beauty</button>
-        <button class="opt-btn" onclick="sel('c','campaign','HomeDecor',this)">HomeDecor</button>
-        <button class="opt-btn" onclick="sel('c','campaign','Sports',this)">Sports</button>
+        <button class="opt-btn" onclick="sel('c','campaign','summersale',this)">summersale</button>
+        <button class="opt-btn" onclick="sel('c','campaign','blackfriday',this)">blackfriday</button>
+        <button class="opt-btn" onclick="sel('c','campaign','winterpromo',this)">winterpromo</button>
+        <button class="opt-btn" onclick="sel('c','campaign','newyear',this)">newyear</button>
+        <button class="opt-btn" onclick="sel('c','campaign','ramadan',this)">ramadan</button>
       </div>
-      <div class="custom-row">
-        <input class="custom-input" id="c-campaign-custom" placeholder="Custom (e.g. RamadanSale, Appliances)" />
-        <button class="add-btn" onclick="addCustom('c','campaign')">+ Add & Select</button>
+      <div class="add-row">
+        <input class="custom-input" id="c-campaign-input" placeholder="Custom campaign name (e.g. BackToSchool)" />
+        <button class="add-btn" onclick="addCustom('c','campaign')">+ Add</button>
       </div>
     </div>
 
     <div class="field-group">
       <div class="section-label">4 · Audience</div>
       <div class="options-grid" id="c-audience-opts">
-        <button class="opt-btn" onclick="sel('c','audience','Cold',this)">Cold</button>
-        <button class="opt-btn" onclick="sel('c','audience','Broad',this)">Broad</button>
-        <button class="opt-btn" onclick="sel('c','audience','LAL',this)">LAL</button>
-        <button class="opt-btn" onclick="sel('c','audience','LAL-Buyers',this)">LAL-Buyers</button>
-        <button class="opt-btn" onclick="sel('c','audience','LAL-CRM',this)">LAL-CRM</button>
-        <button class="opt-btn" onclick="sel('c','audience','CRM',this)">CRM</button>
-        <button class="opt-btn" onclick="sel('c','audience','Visitors7d',this)">Visitors7d</button>
-        <button class="opt-btn" onclick="sel('c','audience','Visitors14d',this)">Visitors14d</button>
-        <button class="opt-btn" onclick="sel('c','audience','Visitors30d',this)">Visitors30d</button>
-        <button class="opt-btn" onclick="sel('c','audience','CartAband',this)">CartAband</button>
-        <button class="opt-btn" onclick="sel('c','audience','PDPView',this)">PDPView</button>
-        <button class="opt-btn" onclick="sel('c','audience','Buyers',this)">Buyers</button>
-        <button class="opt-btn" onclick="sel('c','audience','Winback',this)">Winback</button>
+        <button class="opt-btn" onclick="sel('c','audience','cold',this)">cold</button>
+        <button class="opt-btn" onclick="sel('c','audience','broad',this)">broad</button>
+        <button class="opt-btn" onclick="sel('c','audience','lal',this)">lal</button>
+        <button class="opt-btn" onclick="sel('c','audience','lalbuyers',this)">lalbuyers</button>
+        <button class="opt-btn" onclick="sel('c','audience','lalcrm',this)">lalcrm</button>
+        <button class="opt-btn" onclick="sel('c','audience','crm',this)">crm</button>
+        <button class="opt-btn" onclick="sel('c','audience','visitors7d',this)">visitors7d</button>
+        <button class="opt-btn" onclick="sel('c','audience','visitors14d',this)">visitors14d</button>
+        <button class="opt-btn" onclick="sel('c','audience','visitors30d',this)">visitors30d</button>
+        <button class="opt-btn" onclick="sel('c','audience','cartaband',this)">cartaband</button>
+        <button class="opt-btn" onclick="sel('c','audience','pdpview',this)">pdpview</button>
+        <button class="opt-btn" onclick="sel('c','audience','buyers',this)">buyers</button>
+        <button class="opt-btn" onclick="sel('c','audience','winback',this)">winback</button>
       </div>
-      <div class="custom-row">
-        <input class="custom-input" id="c-audience-custom" placeholder="Custom audience" />
-        <button class="add-btn" onclick="addCustom('c','audience')">+ Add & Select</button>
+      <div class="add-row">
+        <input class="custom-input" id="c-audience-input" placeholder="Custom audience" />
+        <button class="add-btn" onclick="addCustom('c','audience')">+ Add</button>
       </div>
     </div>
 
     <div class="output-box">
-      <div class="output-label">Generated Campaign Name</div>
-      <div class="btn-row">
-        <button class="reset-btn" onclick="resetTab('c')">↺ Reset</button>
-        <button class="copy-btn" id="c-copy-btn" onclick="copyName('c')">Copy</button>
+      <div class="output-top">
+        <div style="flex:1">
+          <div class="output-label">Generated Campaign Name</div>
+          <div class="name-preview" id="c-preview">— Select options above —</div>
+        </div>
+        <div class="btn-row">
+          <button class="reset-btn" onclick="resetTab('c')">↺</button>
+          <button class="copy-btn" id="c-copy-btn" onclick="copyName('c')">Copy</button>
+        </div>
       </div>
-      <div class="name-preview" id="c-preview">— Select options above —</div>
       <div class="plain-name" id="c-plain"></div>
       <div class="legend">
         <div class="chip"><div class="chip-dot" style="background:var(--acq)"></div>Team</div>
         <div class="chip"><div class="chip-dot" style="background:#a08fff"></div>Type</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Campaign/Cat</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Campaign</div>
         <div class="chip"><div class="chip-dot" style="background:var(--yellow)"></div>Audience</div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════ AD SET ══════════ -->
+  <!-- ══════════════════ AD SET ══════════════════ -->
   <div id="tab-adset" class="tab-content">
-    <div class="level-badge lv-adset">AD SET LEVEL</div>
+    <div class="level-badge lv-as">AD SET LEVEL</div>
     <div class="structure-pill">
-      <strong>[Team] _ [Category] _ [Audience] _ [Placement]</strong>
-      e.g. ACQ_Electronics_LAL_Feed · ENG_SummerSale_CartAband_Stories
+      <strong>[Team] _ [Site Category] _ [Audience]</strong>
+      e.g. Acq_Smartphones_Lal · Eng_Electronics_CartAband · Acq_Mix_Cold
     </div>
 
     <div class="field-group">
       <div class="section-label">1 · Team</div>
       <div class="options-grid" id="as-team-opts">
-        <button class="opt-btn" onclick="sel('as','team','ACQ',this,'acq')">ACQ — Acquisition</button>
-        <button class="opt-btn" onclick="sel('as','team','ENG',this,'eng')">ENG — Engagement</button>
+        <button class="opt-btn" onclick="sel('as','team','Acq',this,'acq')">Acq — Acquisition</button>
+        <button class="opt-btn" onclick="sel('as','team','Eng',this,'eng')">Eng — Engagement</button>
       </div>
     </div>
 
     <div class="field-group">
-      <div class="section-label">2 · Category / Campaign</div>
+      <div class="section-label">2 · Site Category (дерево сайта)</div>
       <div class="options-grid" id="as-category-opts">
-        <button class="opt-btn" onclick="sel('as','category','SummerSale',this)">SummerSale</button>
-        <button class="opt-btn" onclick="sel('as','category','BlackFriday',this)">BlackFriday</button>
-        <button class="opt-btn" onclick="sel('as','category','WinterPromo',this)">WinterPromo</button>
-        <button class="opt-btn" onclick="sel('as','category','Electronics',this)">Electronics</button>
-        <button class="opt-btn" onclick="sel('as','category','Fashion',this)">Fashion</button>
-        <button class="opt-btn" onclick="sel('as','category','Beauty',this)">Beauty</button>
-        <button class="opt-btn" onclick="sel('as','category','HomeDecor',this)">HomeDecor</button>
-        <button class="opt-btn" onclick="sel('as','category','Sports',this)">Sports</button>
+        <button class="opt-btn" onclick="sel('as','category','mix',this)">mix</button>
+        <button class="opt-btn" onclick="sel('as','category','electronics',this)">electronics</button>
+        <button class="opt-btn" onclick="sel('as','category','smartphones',this)">smartphones</button>
+        <button class="opt-btn" onclick="sel('as','category','laptops',this)">laptops</button>
+        <button class="opt-btn" onclick="sel('as','category','tvs',this)">tvs</button>
+        <button class="opt-btn" onclick="sel('as','category','fashion',this)">fashion</button>
+        <button class="opt-btn" onclick="sel('as','category','beauty',this)">beauty</button>
+        <button class="opt-btn" onclick="sel('as','category','homedecor',this)">homedecor</button>
+        <button class="opt-btn" onclick="sel('as','category','appliances',this)">appliances</button>
+        <button class="opt-btn" onclick="sel('as','category','sports',this)">sports</button>
+        <button class="opt-btn" onclick="sel('as','category','toys',this)">toys</button>
+        <button class="opt-btn" onclick="sel('as','category','automotive',this)">automotive</button>
       </div>
-      <div class="custom-row">
-        <input class="custom-input" id="as-category-custom" placeholder="Custom category / campaign" />
-        <button class="add-btn" onclick="addCustom('as','category')">+ Add & Select</button>
+      <div class="add-row">
+        <input class="custom-input" id="as-category-input" placeholder="Category from site (e.g. Gaming, BabyProducts)" />
+        <button class="add-btn" onclick="addCustom('as','category')">+ Add</button>
       </div>
     </div>
 
@@ -269,321 +294,447 @@
       <div class="options-grid" id="as-audience-opts">
         <button class="opt-btn" onclick="sel('as','audience','Cold',this)">Cold</button>
         <button class="opt-btn" onclick="sel('as','audience','Broad',this)">Broad</button>
-        <button class="opt-btn" onclick="sel('as','audience','LAL',this)">LAL</button>
-        <button class="opt-btn" onclick="sel('as','audience','LAL-Buyers',this)">LAL-Buyers</button>
-        <button class="opt-btn" onclick="sel('as','audience','CRM',this)">CRM</button>
+        <button class="opt-btn" onclick="sel('as','audience','Lal',this)">Lal</button>
+        <button class="opt-btn" onclick="sel('as','audience','LalBuyers',this)">LalBuyers</button>
+        <button class="opt-btn" onclick="sel('as','audience','Crm',this)">Crm</button>
         <button class="opt-btn" onclick="sel('as','audience','Visitors7d',this)">Visitors7d</button>
         <button class="opt-btn" onclick="sel('as','audience','Visitors14d',this)">Visitors14d</button>
         <button class="opt-btn" onclick="sel('as','audience','Visitors30d',this)">Visitors30d</button>
         <button class="opt-btn" onclick="sel('as','audience','CartAband',this)">CartAband</button>
-        <button class="opt-btn" onclick="sel('as','audience','PDPView',this)">PDPView</button>
+        <button class="opt-btn" onclick="sel('as','audience','PdpView',this)">PdpView</button>
         <button class="opt-btn" onclick="sel('as','audience','Buyers',this)">Buyers</button>
         <button class="opt-btn" onclick="sel('as','audience','Winback',this)">Winback</button>
       </div>
-      <div class="custom-row">
-        <input class="custom-input" id="as-audience-custom" placeholder="Custom audience" />
-        <button class="add-btn" onclick="addCustom('as','audience')">+ Add & Select</button>
-      </div>
-    </div>
-
-    <div class="field-group">
-      <div class="section-label">4 · Placement <span style="color:var(--muted);font-size:10px">(optional)</span></div>
-      <div class="options-grid" id="as-placement-opts">
-        <button class="opt-btn" onclick="sel('as','placement','Feed',this,'yel')">Feed</button>
-        <button class="opt-btn" onclick="sel('as','placement','Stories',this,'yel')">Stories</button>
-        <button class="opt-btn" onclick="sel('as','placement','Reels',this,'yel')">Reels</button>
-        <button class="opt-btn" onclick="sel('as','placement','Search',this,'yel')">Search</button>
-        <button class="opt-btn" onclick="sel('as','placement','Display',this,'yel')">Display</button>
-        <button class="opt-btn" onclick="sel('as','placement','InStream',this,'yel')">InStream</button>
-        <button class="opt-btn" onclick="sel('as','placement','TopFeed',this,'yel')">TopFeed</button>
-        <button class="opt-btn" onclick="sel('as','placement','Auto',this,'yel')">Auto</button>
+      <div class="add-row">
+        <input class="custom-input" id="as-audience-input" placeholder="Custom audience" />
+        <button class="add-btn" onclick="addCustom('as','audience')">+ Add</button>
       </div>
     </div>
 
     <div class="output-box">
-      <div class="output-label">Generated Ad Set Name</div>
-      <div class="btn-row">
-        <button class="reset-btn" onclick="resetTab('as')">↺ Reset</button>
-        <button class="copy-btn" id="as-copy-btn" onclick="copyName('as')">Copy</button>
+      <div class="output-top">
+        <div style="flex:1">
+          <div class="output-label">Generated Ad Set Name</div>
+          <div class="name-preview" id="as-preview">— Select options above —</div>
+        </div>
+        <div class="btn-row">
+          <button class="reset-btn" onclick="resetTab('as')">↺</button>
+          <button class="copy-btn" id="as-copy-btn" onclick="copyName('as')">Copy</button>
+        </div>
       </div>
-      <div class="name-preview" id="as-preview">— Select options above —</div>
       <div class="plain-name" id="as-plain"></div>
       <div class="legend">
         <div class="chip"><div class="chip-dot" style="background:var(--acq)"></div>Team</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Category</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Site Category</div>
         <div class="chip"><div class="chip-dot" style="background:var(--yellow)"></div>Audience</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--blue)"></div>Placement</div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════ AD ══════════ -->
+  <!-- ══════════════════ AD ══════════════════ -->
   <div id="tab-ad" class="tab-content">
     <div class="level-badge lv-ad">AD LEVEL</div>
     <div class="structure-pill">
-      <strong>[Format] _ [Brand / Product] _ [Version]</strong>
-      e.g. Carousel_NikeAirMax_v1 · Video_SamsungTV_v2 · Single_ZaraCollection_A
+      <strong>[Format] _ [Brand / Product]</strong>
+      e.g. Carousel_AnkerSoundcoreA30 · Video_NikeAirMax · Single_ZaraDress
     </div>
 
     <div class="field-group">
       <div class="section-label">1 · Ad Format</div>
       <div class="options-grid" id="ad-format-opts">
-        <button class="opt-btn" onclick="sel('ad','format','Single',this,'blu')">Single Image</button>
+        <button class="opt-btn" onclick="sel('ad','format','Single',this,'blu')">Single</button>
         <button class="opt-btn" onclick="sel('ad','format','Carousel',this,'blu')">Carousel</button>
         <button class="opt-btn" onclick="sel('ad','format','Video',this,'blu')">Video</button>
-        <button class="opt-btn" onclick="sel('ad','format','Animation',this,'blu')">Animation / GIF</button>
+        <button class="opt-btn" onclick="sel('ad','format','Animation',this,'blu')">Animation</button>
         <button class="opt-btn" onclick="sel('ad','format','Collection',this,'blu')">Collection</button>
-        <button class="opt-btn" onclick="sel('ad','format','DPA',this,'blu')">DPA (Dynamic)</button>
+        <button class="opt-btn" onclick="sel('ad','format','Dpa',this,'blu')">Dpa</button>
         <button class="opt-btn" onclick="sel('ad','format','Story',this,'blu')">Story</button>
         <button class="opt-btn" onclick="sel('ad','format','Reel',this,'blu')">Reel</button>
-        <button class="opt-btn" onclick="sel('ad','format','UGC',this,'blu')">UGC</button>
+        <button class="opt-btn" onclick="sel('ad','format','Ugc',this,'blu')">Ugc</button>
       </div>
     </div>
 
     <div class="field-group">
       <div class="section-label">2 · Brand / Product / Model</div>
-      <div class="options-grid" id="ad-product-opts"></div>
-      <div class="custom-row">
-        <input class="custom-input" id="ad-product-custom" placeholder="Brand or product (e.g. NikeAirMax, SamsungTV65)" />
-        <button class="add-btn" onclick="addCustom('ad','product')">+ Add & Select</button>
+      <div class="options-grid" id="ad-product-opts">
+        <!-- restored from storage -->
       </div>
-    </div>
-
-    <div class="field-group">
-      <div class="section-label">3 · Version <span style="color:var(--muted);font-size:10px">(A/B test or iteration)</span></div>
-      <div class="options-grid" id="ad-version-opts">
-        <button class="opt-btn" onclick="sel('ad','version','v1',this)">v1</button>
-        <button class="opt-btn" onclick="sel('ad','version','v2',this)">v2</button>
-        <button class="opt-btn" onclick="sel('ad','version','v3',this)">v3</button>
-        <button class="opt-btn" onclick="sel('ad','version','v4',this)">v4</button>
-        <button class="opt-btn" onclick="sel('ad','version','A',this)">A</button>
-        <button class="opt-btn" onclick="sel('ad','version','B',this)">B</button>
-        <button class="opt-btn" onclick="sel('ad','version','C',this)">C</button>
+      <!-- manual add -->
+      <div class="add-row">
+        <input class="custom-input" id="ad-product-input" placeholder="e.g. AnkerSoundcoreA30, NikeAirMax" />
+        <button class="add-btn" onclick="addCustom('ad','product')">+ Add</button>
       </div>
+      <!-- URL parser -->
+      <div class="url-row" style="margin-top:10px">
+        <input class="custom-input" id="ad-url-input" placeholder="Paste product URL to auto-extract name…" />
+        <button class="parse-btn" onclick="parseUrl()">⟳ From URL</button>
+      </div>
+      <div class="parse-status" id="parse-status"></div>
     </div>
 
     <div class="output-box">
-      <div class="output-label">Generated Ad Name</div>
-      <div class="btn-row">
-        <button class="reset-btn" onclick="resetTab('ad')">↺ Reset</button>
-        <button class="copy-btn" id="ad-copy-btn" onclick="copyName('ad')">Copy</button>
+      <div class="output-top">
+        <div style="flex:1">
+          <div class="output-label">Generated Ad Name</div>
+          <div class="name-preview" id="ad-preview">— Select options above —</div>
+        </div>
+        <div class="btn-row">
+          <button class="reset-btn" onclick="resetTab('ad')">↺</button>
+          <button class="copy-btn" id="ad-copy-btn" onclick="copyName('ad')">Copy</button>
+        </div>
       </div>
-      <div class="name-preview" id="ad-preview">— Select options above —</div>
       <div class="plain-name" id="ad-plain"></div>
       <div class="legend">
         <div class="chip"><div class="chip-dot" style="background:var(--blue)"></div>Format</div>
-        <div class="chip"><div class="chip-dot" style="background:#ff9f61"></div>Brand/Product</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--text)"></div>Version</div>
+        <div class="chip"><div class="chip-dot" style="background:#ff9f61"></div>Brand / Product</div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════ DICTIONARY ══════════ -->
+  <!-- ══════════════════ DICTIONARY ══════════════════ -->
   <div id="tab-dictionary" class="tab-content">
-
     <div class="dict-section">
       <div class="dict-title">Team</div>
       <table>
         <tr><th>Code</th><th>Full Name</th><th>Usage</th></tr>
-        <tr><td><span class="tag tag-acq">ACQ</span></td><td>Acquisition</td><td>Cold, LAL, Broad — finding new users</td></tr>
-        <tr><td><span class="tag tag-eng">ENG</span></td><td>Engagement</td><td>Retargeting, upsell, winback — existing users</td></tr>
+        <tr><td><span class="tag tag-acq">Acq</span></td><td>Acquisition</td><td>Cold, Lal, Broad — finding new users</td></tr>
+        <tr><td><span class="tag tag-eng">Eng</span></td><td>Engagement</td><td>Retargeting, upsell, winback — existing users</td></tr>
       </table>
     </div>
-
     <div class="dict-section">
       <div class="dict-title">Campaign Type</div>
       <table>
         <tr><th>Code</th><th>Full Name</th><th>Platform</th><th>Team</th></tr>
-        <tr><td>Conv</td><td>Conversions</td><td>Meta · TikTok · Google</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Ret</td><td>Retargeting</td><td>Meta · TikTok · Google</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Catalog</td><td>Catalog / DPA</td><td>Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>AppPromo</td><td>App Campaign</td><td>Google · Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Demand</td><td>Demand Gen</td><td>Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Display</td><td>Display</td><td>Google</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>PMax</td><td>Performance Max</td><td>Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Video</td><td>Video / YouTube</td><td>Google · TikTok · Meta</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Traffic</td><td>Traffic</td><td>Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Reach</td><td>Reach / Awareness</td><td>Meta · TikTok · Google</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>LeadGen</td><td>Lead Generation</td><td>Meta · TikTok</td><td><span class="tag tag-acq">ACQ</span></td></tr>
+        <tr><td>Conv</td><td>Conversions</td><td>Meta · TikTok · Google</td><td><span class="tag tag-acq">Acq</span><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Ret</td><td>Retargeting</td><td>Meta · TikTok · Google</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Catalog</td><td>Catalog / DPA</td><td>Meta · TikTok</td><td><span class="tag tag-acq">Acq</span><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>AppPromo</td><td>App Campaign</td><td>Google · Meta · TikTok</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Demand</td><td>Demand Gen</td><td>Google</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Display</td><td>Display</td><td>Google</td><td><span class="tag tag-acq">Acq</span><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Pmax</td><td>Performance Max</td><td>Google</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Video</td><td>Video / YouTube</td><td>Google · TikTok · Meta</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Traffic</td><td>Traffic</td><td>Meta · TikTok</td><td><span class="tag tag-acq">Acq</span><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Reach</td><td>Reach / Awareness</td><td>Meta · TikTok · Google</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>LeadGen</td><td>Lead Generation</td><td>Meta · TikTok</td><td><span class="tag tag-acq">Acq</span></td></tr>
       </table>
     </div>
-
     <div class="dict-section">
       <div class="dict-title">Audience</div>
       <table>
         <tr><th>Code</th><th>Description</th><th>Team</th></tr>
-        <tr><td>Cold</td><td>No prior interaction — interest/demo targeting</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>Broad</td><td>No targeting restrictions, algorithm-driven</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>LAL</td><td>Lookalike audience (general)</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>LAL-Buyers</td><td>Lookalike based on past buyers</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>LAL-CRM</td><td>Lookalike seeded from CRM list</td><td><span class="tag tag-acq">ACQ</span></td></tr>
-        <tr><td>CRM</td><td>Uploaded customer / email list</td><td><span class="tag tag-both">BOTH</span></td></tr>
-        <tr><td>Visitors7d</td><td>Site/app visitors last 7 days</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Visitors14d</td><td>Site/app visitors last 14 days</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Visitors30d</td><td>Site/app visitors last 30 days</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>CartAband</td><td>Added to cart, did not purchase</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>PDPView</td><td>Viewed product detail page</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Buyers</td><td>Past purchasers</td><td><span class="tag tag-eng">ENG</span></td></tr>
-        <tr><td>Winback</td><td>Lapsed buyers (60–180d no purchase)</td><td><span class="tag tag-eng">ENG</span></td></tr>
+        <tr><td>Cold</td><td>No prior interaction</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Broad</td><td>No targeting, algorithm-driven</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Lal</td><td>Lookalike audience</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>LalBuyers</td><td>Lookalike from past buyers</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>LalCrm</td><td>Lookalike seeded from CRM</td><td><span class="tag tag-acq">Acq</span></td></tr>
+        <tr><td>Crm</td><td>Uploaded customer/email list</td><td><span class="tag tag-both">Both</span></td></tr>
+        <tr><td>Visitors7d</td><td>Site/app visitors last 7 days</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Visitors14d</td><td>Site/app visitors last 14 days</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Visitors30d</td><td>Site/app visitors last 30 days</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>CartAband</td><td>Added to cart, no purchase</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>PdpView</td><td>Viewed product detail page</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Buyers</td><td>Past purchasers</td><td><span class="tag tag-eng">Eng</span></td></tr>
+        <tr><td>Winback</td><td>Lapsed buyers 60–180d</td><td><span class="tag tag-eng">Eng</span></td></tr>
       </table>
     </div>
-
     <div class="dict-section">
       <div class="dict-title">Ad Format</div>
       <table>
         <tr><th>Code</th><th>Description</th></tr>
         <tr><td>Single</td><td>Single static image</td></tr>
-        <tr><td>Carousel</td><td>Multiple swipeable image/video cards</td></tr>
+        <tr><td>Carousel</td><td>Multiple swipeable cards</td></tr>
         <tr><td>Video</td><td>Video ad (any length)</td></tr>
         <tr><td>Animation</td><td>Animated GIF or motion graphic</td></tr>
         <tr><td>Collection</td><td>Collection / instant experience</td></tr>
-        <tr><td>DPA</td><td>Dynamic Product Ad — auto-generated from feed</td></tr>
-        <tr><td>Story</td><td>Vertical 9:16 story format</td></tr>
-        <tr><td>Reel</td><td>Short-form vertical video (Reels / TikTok)</td></tr>
-        <tr><td>UGC</td><td>User-generated content style creative</td></tr>
+        <tr><td>Dpa</td><td>Dynamic Product Ad from feed</td></tr>
+        <tr><td>Story</td><td>Vertical 9:16 story</td></tr>
+        <tr><td>Reel</td><td>Short-form vertical video</td></tr>
+        <tr><td>Ugc</td><td>User-generated content style</td></tr>
       </table>
     </div>
-
-    <div class="dict-section">
-      <div class="dict-title">Placement (Ad Set)</div>
-      <table>
-        <tr><th>Code</th><th>Description</th></tr>
-        <tr><td>Feed</td><td>Main feed placement</td></tr>
-        <tr><td>Stories</td><td>Stories placement</td></tr>
-        <tr><td>Reels</td><td>Reels / short video feed</td></tr>
-        <tr><td>Search</td><td>Search results (Google / Meta)</td></tr>
-        <tr><td>Display</td><td>Display network banners</td></tr>
-        <tr><td>InStream</td><td>In-stream video (YouTube)</td></tr>
-        <tr><td>TopFeed</td><td>TikTok TopView / top of feed</td></tr>
-        <tr><td>Auto</td><td>Automatic / Advantage+ placements</td></tr>
-      </table>
-    </div>
-
   </div>
 
-  <!-- ══════════ AUDIENCES ══════════ -->
+  <!-- ══════════════════ AUDIENCES ══════════════════ -->
   <div id="tab-audiences" class="tab-content">
-    <div class="audience-structure">
-      <div class="section-label">Audience Naming Structure (when uploading to ad cabinet)</div>
+    <div class="aud-box">
+      <div class="section-label">Audience Naming (when uploading to cabinet)</div>
       <div class="aud-formula">[Team] _ [Source] _ [Segment] _ [Window]</div>
-      <div class="aud-example">e.g. <span>ACQ_LAL_Buyers_180d</span> · <span>ENG_Pixel_CartAband_7d</span> · <span>ENG_CRM_Buyers_All</span></div>
+      <div class="aud-example">e.g. <span>Acq_Lal_Buyers_180d</span> · <span>Eng_Pixel_CartAband_7d</span> · <span>Eng_Crm_Buyers_All</span></div>
     </div>
-
     <div class="dict-section">
-      <div class="dict-title">Audience Name Examples</div>
+      <div class="dict-title">Examples</div>
       <div class="examples-grid">
-        <div class="example-card"><div class="ex-name">ACQ_LAL_Buyers_180d</div><div class="ex-desc">Lookalike from buyers, 180-day seed</div></div>
-        <div class="example-card"><div class="ex-name">ACQ_LAL_TopBuyers_90d</div><div class="ex-desc">Lookalike from top spenders</div></div>
-        <div class="example-card"><div class="ex-name">ACQ_CRM_EmailList_All</div><div class="ex-desc">Full CRM email list upload</div></div>
-        <div class="example-card"><div class="ex-name">ACQ_LAL_CRM_All</div><div class="ex-desc">Lookalike seeded from CRM list</div></div>
-        <div class="example-card"><div class="ex-name">ENG_Pixel_CartAband_7d</div><div class="ex-desc">Cart abandoners — last 7 days</div></div>
-        <div class="example-card"><div class="ex-name">ENG_Pixel_Visitors_30d</div><div class="ex-desc">All site/app visitors — last 30 days</div></div>
-        <div class="example-card"><div class="ex-name">ENG_Pixel_PDPView_14d</div><div class="ex-desc">Product page viewers — last 14 days</div></div>
-        <div class="example-card"><div class="ex-name">ENG_CRM_Buyers_All</div><div class="ex-desc">All past buyers from CRM upload</div></div>
-        <div class="example-card"><div class="ex-name">ENG_CRM_Winback_180d</div><div class="ex-desc">Lapsed customers — no purchase 180d+</div></div>
-        <div class="example-card"><div class="ex-name">ENG_Pixel_AddToCart_14d</div><div class="ex-desc">Added to cart — last 14 days</div></div>
+        <div class="example-card"><div class="ex-name">Acq_Lal_Buyers_180d</div><div class="ex-desc">Lookalike from buyers, 180d seed</div></div>
+        <div class="example-card"><div class="ex-name">Acq_Lal_TopBuyers_90d</div><div class="ex-desc">Lookalike from top spenders</div></div>
+        <div class="example-card"><div class="ex-name">Acq_Crm_EmailList_All</div><div class="ex-desc">Full CRM email list upload</div></div>
+        <div class="example-card"><div class="ex-name">Eng_Pixel_CartAband_7d</div><div class="ex-desc">Cart abandoners — last 7 days</div></div>
+        <div class="example-card"><div class="ex-name">Eng_Pixel_Visitors_30d</div><div class="ex-desc">All visitors — last 30 days</div></div>
+        <div class="example-card"><div class="ex-name">Eng_Pixel_PdpView_14d</div><div class="ex-desc">Product page viewers — 14d</div></div>
+        <div class="example-card"><div class="ex-name">Eng_Crm_Buyers_All</div><div class="ex-desc">All past buyers from CRM</div></div>
+        <div class="example-card"><div class="ex-name">Eng_Crm_Winback_180d</div><div class="ex-desc">Lapsed customers 180d+</div></div>
       </div>
     </div>
-
     <div class="dict-section">
-      <div class="dict-title">Audience Source Codes</div>
+      <div class="dict-title">Source Codes</div>
       <table>
         <tr><th>Code</th><th>Source</th><th>Description</th></tr>
-        <tr><td>LAL</td><td>Lookalike</td><td>Platform-generated audience similar to seed</td></tr>
+        <tr><td>Lal</td><td>Lookalike</td><td>Platform-generated similar to seed</td></tr>
         <tr><td>Pixel</td><td>Website / App Pixel</td><td>Behavior tracked via pixel or SDK</td></tr>
-        <tr><td>CRM</td><td>CRM Upload</td><td>Uploaded email / phone list</td></tr>
+        <tr><td>Crm</td><td>CRM Upload</td><td>Uploaded email / phone list</td></tr>
         <tr><td>EngVideo</td><td>Video Engagement</td><td>Watched X% of a video ad</td></tr>
-        <tr><td>EngPage</td><td>Page Engagement</td><td>Liked / followed / interacted with page</td></tr>
+        <tr><td>EngPage</td><td>Page Engagement</td><td>Interacted with page/profile</td></tr>
       </table>
     </div>
   </div>
 
-</div>
+</div><!-- /container -->
 
 <script>
-  const states = {
-    c:  { team: null, type: null, campaign: null, audience: null },
-    as: { team: null, category: null, audience: null, placement: null },
-    ad: { format: null, product: null, version: null }
-  };
+// ─── State ────────────────────────────────────────────────────────
+const S = {
+  c:  {team:null,type:null,campaign:null,audience:null},
+  as: {team:null,category:null,audience:null},
+  ad: {format:null,product:null}
+};
 
-  const tabIds = { campaign: 'tab-campaign', adset: 'tab-adset', ad: 'tab-ad', dictionary: 'tab-dictionary', audiences: 'tab-audiences' };
+// ─── Storage ──────────────────────────────────────────────────────
+const SK = {
+  'c-type':'nmg_c_type','c-campaign':'nmg_c_campaign','c-audience':'nmg_c_audience',
+  'as-category':'nmg_as_category','as-audience':'nmg_as_audience',
+  'ad-product':'nmg_ad_product'
+};
+const load = k => { try{return JSON.parse(localStorage.getItem(k)||'[]')}catch{return[]} };
+const save = (k,a) => { try{localStorage.setItem(k,JSON.stringify(a))}catch{} };
 
-  function sel(tab, field, value, btn, colorClass) {
-    states[tab][field] = value;
-    btn.closest('.options-grid').querySelectorAll('.opt-btn').forEach(b => b.className = 'opt-btn');
-    const cls = { acq:'sel-acq', eng:'sel-eng', yel:'sel-yel', blu:'sel-blu' }[colorClass] || 'sel-def';
-    btn.classList.add(cls);
-    updatePreview(tab);
-  }
+// ─── Build custom pill ────────────────────────────────────────────
+function makePill(tab, field, val) {
+  const pill = document.createElement('div');
+  pill.className = 'cpill';
+  pill.dataset.val = val;
 
-  function addCustom(tab, field) {
-    const input = document.getElementById(`${tab}-${field}-custom`);
-    const val = input.value.trim().replace(/\s+/g, '');
-    if (!val) return;
+  const lbl = document.createElement('button');
+  lbl.className = 'cpill-lbl';
+  lbl.textContent = val;
+  lbl.onclick = () => selPill(tab, field, val, pill);
+
+  const del = document.createElement('button');
+  del.className = 'cpill-del';
+  del.textContent = '×';
+  del.title = 'Delete';
+  del.onclick = e => { e.stopPropagation(); deletePill(tab,field,val,pill); };
+
+  pill.appendChild(lbl);
+  pill.appendChild(del);
+  return pill;
+}
+
+function deletePill(tab, field, val, pill) {
+  const k = SK[`${tab}-${field}`];
+  if (k) save(k, load(k).filter(v=>v!==val));
+  if (S[tab][field]===val) { S[tab][field]=null; updatePreview(tab); }
+  pill.remove();
+}
+
+function selPill(tab, field, val, pill) {
+  S[tab][field] = val;
+  clearGrid(`${tab}-${field}-opts`);
+  pill.classList.add('sel-def');
+  updatePreview(tab);
+}
+
+// ─── Restore saved pills on load ─────────────────────────────────
+function restoreAll() {
+  Object.entries(SK).forEach(([key,sk])=>{
+    const [tab,field] = key.split('-');
     const grid = document.getElementById(`${tab}-${field}-opts`);
-    const btn = document.createElement('button');
-    btn.className = 'opt-btn';
-    btn.textContent = val;
-    btn.onclick = function() { sel(tab, field, val, this); };
-    grid.appendChild(btn);
-    sel(tab, field, val, btn);
-    input.value = '';
+    if (!grid) return;
+    load(sk).forEach(val => grid.appendChild(makePill(tab,field,val)));
+  });
+}
+
+// ─── Add custom ───────────────────────────────────────────────────
+function addCustom(tab, field) {
+  const input = document.getElementById(`${tab}-${field}-input`);
+  const raw = input.value.trim();
+  if (!raw) return;
+  // capitalise first letter only, rest lowercase  — then PascalCase words
+  const val = toPascal(raw);
+  const sk = SK[`${tab}-${field}`];
+  if (sk) {
+    const arr = load(sk);
+    if (!arr.includes(val)) { arr.push(val); save(sk,arr); }
   }
+  const grid = document.getElementById(`${tab}-${field}-opts`);
+  const existing = [...grid.querySelectorAll('.cpill')].find(p=>p.dataset.val===val);
+  const pill = existing || makePill(tab,field,val);
+  if (!existing) grid.appendChild(pill);
+  selPill(tab,field,val,pill);
+  input.value = '';
+}
 
-  function updatePreview(tab) {
-    const s = states[tab];
-    const preview = document.getElementById(`${tab}-preview`);
-    const plain = document.getElementById(`${tab}-plain`);
-    let parts = [], html = '';
-    const sep = `<span class="sep">_</span>`;
+// ─── URL parser ────────────────────────────────────────────────────
+async function parseUrl() {
+  const raw = document.getElementById('ad-url-input').value.trim();
+  const status = document.getElementById('parse-status');
+  if (!raw) { setStatus('Paste a product URL first','err'); return; }
 
-    if (tab === 'c') {
-      const tc = s.team === 'ACQ' ? 'p-acq' : 'p-eng';
-      if (s.team)     { html += `<span class="${tc}">${s.team}</span>`;       parts.push(s.team); }
-      if (s.type)     { html += sep + `<span class="p-type">${s.type}</span>`; parts.push(s.type); }
-      if (s.campaign) { html += sep + `<span class="p-cat">${s.campaign}</span>`; parts.push(s.campaign); }
-      if (s.audience) { html += sep + `<span class="p-aud">${s.audience}</span>`; parts.push(s.audience); }
-    } else if (tab === 'as') {
-      const tc = s.team === 'ACQ' ? 'p-acq' : 'p-eng';
-      if (s.team)      { html += `<span class="${tc}">${s.team}</span>`;        parts.push(s.team); }
-      if (s.category)  { html += sep + `<span class="p-cat">${s.category}</span>`; parts.push(s.category); }
-      if (s.audience)  { html += sep + `<span class="p-aud">${s.audience}</span>`; parts.push(s.audience); }
-      if (s.placement) { html += sep + `<span class="p-fmt">${s.placement}</span>`; parts.push(s.placement); }
-    } else if (tab === 'ad') {
-      if (s.format)  { html += `<span class="p-fmt">${s.format}</span>`;         parts.push(s.format); }
-      if (s.product) { html += sep + `<span class="p-product">${s.product}</span>`; parts.push(s.product); }
-      if (s.version) { html += sep + `<span class="p-ver">${s.version}</span>`;  parts.push(s.version); }
+  setStatus('Fetching…','');
+
+  try {
+    // Strategy 1: extract from URL slug
+    let name = extractFromSlug(raw);
+
+    // Strategy 2: try fetch page title via allorigins proxy
+    if (!name || name.length < 4) {
+      const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(raw)}`;
+      const r = await fetch(proxy, {signal: AbortSignal.timeout(6000)});
+      const j = await r.json();
+      const html = j.contents || '';
+      // try og:title first
+      const og = html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i);
+      const titleTag = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+      const rawTitle = (og?.[1] || titleTag?.[1] || '').replace(/\s*[-|–·—].*$/,'').trim();
+      if (rawTitle.length > 2) name = cleanProductName(rawTitle);
     }
 
-    if (!parts.length) { preview.innerHTML = '— Select options above —'; plain.textContent = ''; }
-    else { preview.innerHTML = html; plain.textContent = parts.join('_'); }
+    if (name && name.length > 1) {
+      document.getElementById('ad-product-input').value = name;
+      setStatus(`✓ Extracted: ${name}  — click + Add to save`,'ok');
+    } else {
+      setStatus('Could not extract name. Type it manually.','err');
+    }
+  } catch(e) {
+    // fallback to slug only
+    const name = extractFromSlug(raw);
+    if (name) {
+      document.getElementById('ad-product-input').value = name;
+      setStatus(`✓ From URL: ${name}  — click + Add to save`,'ok');
+    } else {
+      setStatus('Could not fetch page. Type the name manually.','err');
+    }
+  }
+}
+
+function setStatus(msg, cls) {
+  const s = document.getElementById('parse-status');
+  s.textContent = msg;
+  s.className = 'parse-status' + (cls ? ' '+cls : '');
+}
+
+// Extract brand + short model from URL slug
+function extractFromSlug(url) {
+  try {
+    const path = new URL(url).pathname;
+    // take last segment, remove leading ID like "2181377-"
+    const slug = path.split('/').filter(Boolean).pop() || '';
+    const clean = slug.replace(/^\d+-/,'').replace(/[-_]/g,' ');
+    return cleanProductName(clean);
+  } catch { return ''; }
+}
+
+// Clean a product title/slug into PascalCase brand+model, max ~25 chars
+function cleanProductName(raw) {
+  // remove noise words
+  const noise = /\b(offline|europe|excluded|plug|green|black|white|blue|red|silver|gold|grey|gray|the|and|with|for|from|buy|price|sale|shop|color|colour|size|version|edition|model|type|new|set|pack|piece|pcs|kg|ml|gb|tb|inch|cm|mm|hz|watt|w|v|a|ip\d+)\b/gi;
+  const words = raw.replace(/[^a-zA-Z0-9\s]/g,'').replace(noise,'').trim().split(/\s+/).filter(Boolean);
+  // capitalise each word, take first 4 meaningful words
+  const result = words.slice(0,4).map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join('');
+  return result || '';
+}
+
+function toPascal(str) {
+  return str.split(/[\s_-]+/).filter(Boolean)
+    .map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join('');
+}
+
+// ─── Select preset ────────────────────────────────────────────────
+function sel(tab, field, val, btn, colorClass) {
+  S[tab][field] = val;
+  clearGrid(btn.closest('.options-grid').id);
+  const cls={acq:'sel-acq',eng:'sel-eng',yel:'sel-yel',blu:'sel-blu'}[colorClass]||'sel-def';
+  btn.classList.add(cls);
+  updatePreview(tab);
+}
+
+function clearGrid(gridId) {
+  const g = document.getElementById(gridId);
+  if (!g) return;
+  g.querySelectorAll('.opt-btn').forEach(b=>b.className='opt-btn');
+  g.querySelectorAll('.cpill').forEach(p=>{
+    p.className=p.className.replace(/\bsel-\w+/g,'').trim()||'cpill';
+  });
+}
+
+// ─── Preview ──────────────────────────────────────────────────────
+function updatePreview(tab) {
+  const s = S[tab];
+  const prev  = document.getElementById(`${tab}-preview`);
+  const plain = document.getElementById(`${tab}-plain`);
+  let parts=[], html='';
+  const sp = `<span class="sep">_</span>`;
+
+  if (tab==='c') {
+    const tc=s.team==='Acq'?'p-acq':s.team==='Eng'?'p-eng':'p-cat';
+    if(s.team)     {html+=`<span class="${tc}">${s.team}</span>`;parts.push(s.team)}
+    if(s.type)     {html+=sp+`<span class="p-type">${s.type}</span>`;parts.push(s.type)}
+    if(s.campaign) {html+=sp+`<span class="p-cat">${s.campaign}</span>`;parts.push(s.campaign)}
+    if(s.audience) {html+=sp+`<span class="p-aud">${s.audience}</span>`;parts.push(s.audience)}
+  } else if (tab==='as') {
+    const tc=s.team==='Acq'?'p-acq':s.team==='Eng'?'p-eng':'p-cat';
+    if(s.team)     {html+=`<span class="${tc}">${s.team}</span>`;parts.push(s.team)}
+    if(s.category) {html+=sp+`<span class="p-cat">${s.category}</span>`;parts.push(s.category)}
+    if(s.audience) {html+=sp+`<span class="p-aud">${s.audience}</span>`;parts.push(s.audience)}
+  } else if (tab==='ad') {
+    if(s.format)  {html+=`<span class="p-fmt">${s.format}</span>`;parts.push(s.format)}
+    if(s.product) {html+=sp+`<span class="p-product">${s.product}</span>`;parts.push(s.product)}
   }
 
-  function copyName(tab) {
-    const plain = document.getElementById(`${tab}-plain`).textContent;
-    if (!plain) return;
-    navigator.clipboard.writeText(plain).then(() => {
-      const btn = document.getElementById(`${tab}-copy-btn`);
-      btn.textContent = 'Copied!'; btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  if (!parts.length) {prev.innerHTML='— Select options above —';plain.textContent=''}
+  else {prev.innerHTML=html;plain.textContent=parts.join('_')}
+}
+
+// ─── Copy ─────────────────────────────────────────────────────────
+function copyName(tab) {
+  const t = document.getElementById(`${tab}-plain`).textContent;
+  if (!t) return;
+  navigator.clipboard.writeText(t).then(()=>{
+    const b=document.getElementById(`${tab}-copy-btn`);
+    b.textContent='Copied!';b.classList.add('copied');
+    setTimeout(()=>{b.textContent='Copy';b.classList.remove('copied')},2000);
+  });
+}
+
+// ─── Reset ────────────────────────────────────────────────────────
+const tabNames={c:'campaign',as:'adset',ad:'ad'};
+function resetTab(tab) {
+  Object.keys(S[tab]).forEach(k=>S[tab][k]=null);
+  document.getElementById(`tab-${tabNames[tab]}`)
+    .querySelectorAll('.opt-btn,.cpill').forEach(el=>{
+      el.className=el.classList.contains('cpill')?'cpill':'opt-btn';
     });
-  }
+  updatePreview(tab);
+}
 
-  function resetTab(tab) {
-    const s = states[tab];
-    Object.keys(s).forEach(k => s[k] = null);
-    const tabName = tab === 'c' ? 'campaign' : tab === 'as' ? 'adset' : 'ad';
-    document.getElementById(tabIds[tabName]).querySelectorAll('.opt-btn').forEach(b => b.className = 'opt-btn');
-    updatePreview(tab);
-  }
+// ─── Tab switch ───────────────────────────────────────────────────
+const TID={campaign:'tab-campaign',adset:'tab-adset',ad:'tab-ad',dictionary:'tab-dictionary',audiences:'tab-audiences'};
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(TID[name]).classList.add('active');
+  btn.classList.add('active');
+}
 
-  function switchTab(name, btn) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(tabIds[name]).classList.add('active');
-    btn.classList.add('active');
-  }
+// ─── Enter key support ────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  [['c-campaign-input','c','campaign'],['c-audience-input','c','audience'],
+   ['as-category-input','as','category'],['as-audience-input','as','audience'],
+   ['ad-product-input','ad','product']].forEach(([id,tab,field]) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', e=>{ if(e.key==='Enter') addCustom(tab,field); });
+  });
+  document.getElementById('ad-url-input').addEventListener('keydown', e=>{ if(e.key==='Enter') parseUrl(); });
+  restoreAll();
+});
 </script>
 </body>
 </html>
